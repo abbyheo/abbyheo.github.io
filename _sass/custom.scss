@@ -1,0 +1,16 @@
+/* Custom portfolio polish */
+
+.page__hero--overlay {
+  background-position: center center;
+}
+
+.page__hero--overlay .page__title,
+.page__hero--overlay .page__lead,
+.page__hero--overlay .btn {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.72);
+}
+
+.author__avatar img {
+  object-fit: cover;
+  border-radius: 50%;
+}

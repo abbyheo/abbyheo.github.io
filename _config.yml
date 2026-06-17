@@ -55,19 +55,13 @@ search: false
 # Author profile shown in the sidebar
 author:
   name: "Abby Heo"
-  avatar: "/assets/images/avatar-placeholder.png"
+  avatar: "/assets/images/abby-heo-profile.jpg"
   bio: "AI data operations / workflow builder focused on turning ambiguous operational problems into reviewable, measurable, and deployable systems."
   location: "United States"
   links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/abbyheo"
     - label: "Portfolio"
       icon: "fas fa-fw fa-link"
       url: "https://abbyheo.github.io"
 
 footer:
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/abbyheo"
+  links: []

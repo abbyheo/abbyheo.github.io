@@ -4,8 +4,8 @@ layout: splash
 permalink: /
 header:
   overlay_color: "#1f2937"
-  overlay_filter: "0.55"
-  overlay_image: /assets/images/header-placeholder.svg
+  overlay_filter: "0.72"
+  overlay_image: /assets/images/ontology-hero-bg.jpg
   actions:
     - label: "View Projects"
       url: "/projects/"
