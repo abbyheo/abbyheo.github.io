@@ -36,7 +36,7 @@ feature_row:
     btn_class: "btn--inverse"
 ---
 
-I turn ambiguity into measurable, deployable systems by building workflows for messy data operations.
+Data operations and workflow builder focused on ambiguous customer problems, messy data workflows, and measurable quality systems. Experienced in reframing customer-stated problems into root bottlenecks, defining the right operational signals, and building review workflows that make quality, usability, and follow-up action visible.
 
 My current portfolio focuses on two application-grade case studies:
 
