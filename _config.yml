@@ -58,10 +58,7 @@ author:
   avatar: "/assets/images/abby-heo-profile.jpg"
   bio: "AI data operations / workflow builder focused on turning ambiguous operational problems into reviewable, measurable, and deployable systems."
   location: "Seoul, South Korea"
-  links:
-    - label: "Portfolio"
-      icon: "fas fa-fw fa-link"
-      url: "https://abbyheo.github.io"
+  links: []
 
 footer:
   links: []
