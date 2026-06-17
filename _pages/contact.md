@@ -7,7 +7,5 @@ author_profile: true
 
 # Contact
 
-This page will hold public contact links once finalized.
-
-- GitHub: [github.com/abbyheo](https://github.com/abbyheo)
-- Portfolio: [abbyheo.github.io](https://abbyheo.github.io)
+- Email: [abby.dw.heo@gmail.com](mailto:abby.dw.heo@gmail.com)
+- LinkedIn: [www.linkedin.com/in/abbyheo](https://www.linkedin.com/in/abbyheo)
