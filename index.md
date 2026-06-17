@@ -36,7 +36,7 @@ feature_row:
     btn_class: "btn--inverse"
 ---
 
-Data operations and workflow builder focused on ambiguous customer problems, messy data workflows, and measurable quality systems. Experienced in reframing customer-stated problems into root bottlenecks, defining the right operational signals, and building review workflows that make quality, usability, and follow-up action visible.
+I work with customers to diagnose messy data and operations problems, then turn them into clear workflows they can act on. The goal is not just cleaner data, but better customer action: knowing what to fix, what to measure, and what to do next.
 
 My current portfolio focuses on two application-grade case studies:
 

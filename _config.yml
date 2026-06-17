@@ -56,7 +56,7 @@ search: false
 author:
   name: "Abby Heo"
   avatar: "/assets/images/abby-heo-profile.jpg"
-  bio: "Data operations and workflow builder focused on ambiguous customer problems, messy data workflows, and measurable quality systems. Experienced in reframing customer-stated problems into root bottlenecks, defining the right operational signals, and building review workflows that make quality, usability, and follow-up action visible."
+  bio: "Data operations and workflow builder helping customers diagnose messy data problems and turn them into actionable workflows."
   location: "Seoul, South Korea"
   links: []
 
