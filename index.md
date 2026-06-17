@@ -36,7 +36,11 @@ feature_row:
     btn_class: "btn--inverse"
 ---
 
-I work with customers to diagnose messy data and operations problems, then turn them into clear workflows they can act on. The goal is not just cleaner data, but better customer action: knowing what to fix, what to measure, and what to do next.
+I help customers make sense of messy data, turn it into workflows they can act on, and find where value can be created.
+
+My work usually starts in situations where the stated problem is only part of the story: the data is messy, the review process is fragmented, and it is not yet clear what should be measured or fixed. I focus on tracing the real bottleneck, defining the right operational signals, and building workflows that help teams make better decisions and take the next action.
+
+That mindset comes from my legal training. It shaped how I approach ambiguous problems: separating claims from evidence, tracing where decisions break down, and turning messy facts into a clearer course of action.
 
 My current portfolio focuses on two application-grade case studies:
 
