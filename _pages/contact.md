@@ -5,7 +5,5 @@ layout: single
 author_profile: true
 ---
 
-# Contact
-
 - Email: [abby.dw.heo@gmail.com](mailto:abby.dw.heo@gmail.com)
 - LinkedIn: [www.linkedin.com/in/abbyheo](https://www.linkedin.com/in/abbyheo)
