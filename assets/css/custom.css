@@ -14,3 +14,8 @@
   object-fit: cover;
   border-radius: 50%;
 }
+
+.author__bio {
+  text-align: justify;
+  text-justify: inter-word;
+}
