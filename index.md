@@ -11,7 +11,7 @@ header:
       url: "/projects/"
     - label: "Resume"
       url: "/resume/"
-excerpt: "AI data operations, workflow design, and deployment-oriented builder portfolio."
+excerpt: ""
 feature_row:
   - image_path: /assets/images/physical-ai-placeholder.svg
     alt: "Physical AI Dataset Operations Console"
@@ -36,7 +36,7 @@ feature_row:
     btn_class: "btn--inverse"
 ---
 
-I build AI/data operations workflows that turn ambiguous, messy data problems into reviewable, measurable, and deployable systems.
+I turn ambiguity into measurable, deployable systems by building workflows for messy data operations.
 
 My current portfolio focuses on two application-grade case studies:
 
