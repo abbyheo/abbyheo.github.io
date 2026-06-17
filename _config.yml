@@ -56,7 +56,7 @@ search: false
 author:
   name: "Abby Heo"
   avatar: "/assets/images/abby-heo-profile.jpg"
-  bio: "AI data operations / workflow builder focused on turning ambiguous operational problems into reviewable, measurable, and deployable systems."
+  bio: "I build practical data tools for messy review workflows: what happened, what can be used, and what needs follow-up."
   location: "Seoul, South Korea"
   links: []
 
