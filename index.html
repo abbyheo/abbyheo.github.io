@@ -104,18 +104,36 @@
       margin-top: 22px;
     }
 
-    a {
+    a,
+    .link-button {
       color: var(--link);
       text-decoration: none;
       text-underline-offset: 3px;
     }
 
-    a:hover {
+    a:hover,
+    .link-button:hover {
       text-decoration: underline;
     }
 
-    .links a {
+    .link-button {
+      appearance: none;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .links a,
+    .links .link-button {
       font-weight: 600;
+    }
+
+    .copy-status {
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
     .project {
@@ -195,7 +213,8 @@
             <a href="assets/files/abby-heo-resume.pdf">Resume</a>
             <a href="https://www.linkedin.com/in/abbyheo/">LinkedIn</a>
             <a href="https://github.com/abbyheo">GitHub</a>
-            <a href="mailto:abby.dw.heo@gmail.com">Email</a>
+            <button class="link-button" id="copy-email" type="button" data-email="abby.dw.heo@gmail.com" aria-describedby="copy-email-status">Email</button>
+            <span class="copy-status" id="copy-email-status" aria-live="polite"></span>
           </nav>
         </div>
         <img class="profile-photo" src="assets/images/abby-heo-profile.jpg" alt="Abby Heo profile photo">
@@ -254,5 +273,50 @@
       Seoul, Korea · Updated June 2026
     </footer>
   </main>
+
+  <script>
+    (function () {
+      var emailButton = document.getElementById('copy-email');
+      var status = document.getElementById('copy-email-status');
+      if (!emailButton || !status) return;
+
+      function setStatus(message) {
+        status.textContent = message;
+        window.clearTimeout(status.dataset.timer);
+        status.dataset.timer = window.setTimeout(function () {
+          status.textContent = '';
+          emailButton.textContent = 'Email';
+        }, 2200);
+      }
+
+      function fallbackCopy(text) {
+        var textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        var ok = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (!ok) throw new Error('Copy command failed');
+      }
+
+      emailButton.addEventListener('click', function () {
+        var email = emailButton.dataset.email;
+        var copy = navigator.clipboard && window.isSecureContext
+          ? navigator.clipboard.writeText(email)
+          : Promise.resolve().then(function () { fallbackCopy(email); });
+
+        copy.then(function () {
+          emailButton.textContent = 'Copied';
+          setStatus(email);
+        }).catch(function () {
+          emailButton.textContent = 'Email';
+          setStatus(email);
+        });
+      });
+    }());
+  </script>
 </body>
 </html>
