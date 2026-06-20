@@ -41,6 +41,21 @@
       margin-bottom: 48px;
     }
 
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 132px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .profile-photo {
+      width: 132px;
+      height: 132px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
     .eyebrow {
       margin: 0 0 10px;
       color: var(--muted);
@@ -145,6 +160,16 @@
     }
 
     @media (max-width: 560px) {
+      .intro {
+        display: block;
+      }
+
+      .profile-photo {
+        width: 108px;
+        height: 108px;
+        margin-bottom: 22px;
+      }
+
       main {
         width: min(100% - 28px, 760px);
         padding-top: 42px;
@@ -159,17 +184,22 @@
 <body>
   <main>
     <header>
-      <p class="eyebrow">Data Operations &amp; Workflow Builder</p>
-      <h1>Dahm-won (Abby) Heo</h1>
-      <p class="lead">
-        I help customers diagnose messy data problems and turn them into actionable workflows.
-      </p>
-      <nav class="links" aria-label="Profile links">
-        <a href="assets/files/abby-heo-resume.pdf">Resume</a>
-        <a href="https://www.linkedin.com/in/abbyheo/">LinkedIn</a>
-        <a href="https://github.com/abbyheo">GitHub</a>
-        <a href="mailto:abby.dw.heo@gmail.com">Email</a>
-      </nav>
+      <div class="intro">
+        <div>
+          <p class="eyebrow">Data Operations &amp; Workflow Builder</p>
+          <h1>Dahm-won (Abby) Heo</h1>
+          <p class="lead">
+            I help customers diagnose messy data problems and turn them into actionable workflows.
+          </p>
+          <nav class="links" aria-label="Profile links">
+            <a href="assets/files/abby-heo-resume.pdf">Resume</a>
+            <a href="https://www.linkedin.com/in/abbyheo/">LinkedIn</a>
+            <a href="https://github.com/abbyheo">GitHub</a>
+            <a href="mailto:abby.dw.heo@gmail.com">Email</a>
+          </nav>
+        </div>
+        <img class="profile-photo" src="assets/images/abby-heo-profile.jpg" alt="Abby Heo profile photo">
+      </div>
     </header>
 
     <section aria-labelledby="areas">
