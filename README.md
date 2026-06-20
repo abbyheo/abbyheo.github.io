@@ -1,25 +1,12 @@
 # abbyheo.github.io
 
-Portfolio front door for Abby Heo.
+A deliberately simple public landing page for Abby Heo.
 
-Built with GitHub Pages and the [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) Jekyll theme.
+## Public surface
 
-## Current structure
-
-- Home
-- Projects
-  - Physical AI Dataset Operations Console
-  - BookIPs QA Viewer
-- Resume
-- Contact
-
-## Local development
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
+- `index.html` — single-page portfolio landing page
+- `assets/files/abby-heo-resume.pdf` — resume PDF linked from the page
 
 ## Deployment
 
-GitHub Pages deploys from the `main` branch using GitHub Actions.
+GitHub Pages deploys from `main` through `.github/workflows/pages.yml`.
