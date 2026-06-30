@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Physical AI Data Review Console · Dahm-won (Abby) Heo</title>
+  <meta name="description" content="A Palantir Foundry Workshop app walkthrough for turning Physical AI data evidence into staged training-readiness decisions and follow-up actions.">
+  <style>
+    :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#f8fafc; --panel:#ffffff; --ink:#0f172a; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:#fff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:17px; line-height:1.7; }
+    main { width:min(880px, calc(100% - 40px)); margin:0 auto; padding:54px 0 64px; }
+    a { color:var(--link); text-decoration:none; text-underline-offset:3px; }
+    a:hover { text-decoration:underline; }
+    .back { color:var(--muted); font-size:.95rem; margin-bottom:30px; }
+    .back a { margin-right:14px; }
+    .eyebrow { margin:0 0 10px; color:var(--muted); font-size:.82rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    h1 { margin:0 0 12px; font-size:clamp(2.15rem, 6vw, 3.7rem); line-height:1.05; letter-spacing:-.045em; }
+    .subtitle { max-width:760px; margin:0 0 28px; color:#334155; font-size:1.08rem; }
+    .summary-card { margin:30px 0 38px; padding:20px 22px; border:1px solid var(--line); border-radius:18px; background:var(--soft); }
+    .summary-card p { margin:0; color:#263244; }
+    h2 { margin:48px 0 14px; padding-top:28px; border-top:1px solid var(--line); font-size:1.08rem; letter-spacing:.06em; text-transform:uppercase; }
+    h3 { margin:30px 0 10px; font-size:1.18rem; line-height:1.35; }
+    p { margin:0 0 16px; }
+    ul, ol { padding-left:1.35rem; }
+    li { margin:0 0 8px; }
+    figure { margin:28px 0 34px; }
+    figure img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06); }
+    figcaption { margin-top:10px; color:var(--muted); font-size:.94rem; line-height:1.55; }
+    .note { margin:24px 0; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:#fff; color:#263244; }
+    .note strong { color:var(--ink); }
+    .metric-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; margin:22px 0 28px; }
+    .metric { padding:15px 14px; border:1px solid var(--line); border-radius:14px; background:var(--soft); }
+    .metric b { display:block; margin-bottom:2px; color:var(--ink); font-size:1.28rem; line-height:1.2; }
+    .metric span { display:block; color:var(--muted); font-size:.88rem; line-height:1.45; }
+    .flow { margin:22px 0 28px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:var(--soft); }
+    .flow ol { margin:0; padding-left:1.25rem; }
+    .flow li { margin-bottom:7px; }
+    .compact-table { width:100%; margin:22px 0 28px; border-collapse:collapse; font-size:.95rem; line-height:1.55; }
+    .compact-table th, .compact-table td { padding:11px 12px; border-top:1px solid var(--line); text-align:left; vertical-align:top; }
+    .compact-table th { color:var(--muted); font-size:.82rem; letter-spacing:.05em; text-transform:uppercase; }
+    .pill-list { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0; padding:0; list-style:none; }
+    .pill-list li { margin:0; padding:4px 10px; border:1px solid var(--line); border-radius:999px; background:var(--soft); color:#374151; font-size:.86rem; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:22px 0 28px; }
+    .split > div { padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+    .split h3 { margin-top:0; }
+    .contact-note { margin-top:34px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:#fff; color:#263244; }
+    footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem; }
+    @media (max-width:760px) { .metric-grid, .split { grid-template-columns:1fr; } }
+    @media (max-width:560px) { main { width:min(100% - 28px, 880px); padding-top:38px; } body { font-size:16px; } .metric-grid { gap:10px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="back"><a href="../../../">← Back to home</a><a href="../">← Physical AI case study</a></p>
+    <p class="eyebrow">Foundry Workshop app walkthrough · Physical AI data operations</p>
+    <h1>Physical AI Data Review Console</h1>
+    <p class="subtitle">A Palantir Foundry Workshop app that connects episode context, video/QC evidence, staged human review, defect attribution, and follow-up actions into a workflow for training handoff.</p>
+
+    <div class="summary-card">
+      <p>This page is a closer walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app is not a generic dashboard. It models how a team can move from messy Physical AI data collection results to review decisions, expert escalation, training-readiness judgment, and operational follow-up.</p>
+    </div>
+
+    <div class="note">
+      <p><strong>Scope note.</strong> The app uses representative demo data and a portfolio reconstruction of the workflow. QC signals support human review; they do not automatically decide training readiness. Segment windows are review cue windows for video navigation and action-context review, not claims of perfect hand-labeled action boundaries. The role-specific sections show staged review views and decision fields, not full production RBAC.</p>
+    </div>
+
+    <h2 id="problem">Why this app exists</h2>
+    <p>Physical AI data review is not just a question of collecting more robot episodes. A collected episode may pass, fail, or be partially salvageable. Evidence can be scattered across video, sensor checks, raw packages, metadata, reviewer notes, and downstream export items. If the team only sees a flat pass/fail list, it cannot tell which segment is usable, why a case needs expert judgment, or what should change in future collection.</p>
+    <p>The app’s operating thesis is simple: collected episodes are not automatically training-ready data. The review system has to preserve the full collection context, localize issues to the relevant subtask/action context, record staged reviewer judgment, and connect the decision to dataset readiness and follow-up actions.</p>
+
+    <h2 id="map">Workflow map</h2>
+    <div class="flow" aria-label="Workshop app flow">
+      <ol>
+        <li><strong>Dashboard</strong> — batch state, expert escalation cases, all-episode review entry point, and yield-loss drivers.</li>
+        <li><strong>Episode Review Detail</strong> — selected episode summary, lineage, inherited session context, QC signals, same-episode segment decisions, and dataset package readiness.</li>
+        <li><strong>Segment Review Detail</strong> — selected segment video evidence, subtask criteria, decision evidence, Initial Reviewer context, Data PM context, Head Researcher closure, follow-up actions, and export readiness.</li>
+        <li><strong>Follow-up Action Detail</strong> — a recommended action with target, owner, priority, due date, status, source defect, affected segment, QC signal, and evidence traceability.</li>
+      </ol>
+    </div>
+    <p>The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection-attempt context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
+
+    <h2 id="dashboard">Dashboard: operating state before drilldown</h2>
+    <p>The dashboard starts with operating state rather than raw tables. It tells the reviewer whether the current batch is moving toward training handoff, which segment cases required expert judgment, which episodes should be opened for deeper review, and which defect categories are reducing usable Physical AI data.</p>
+
+    <div class="metric-grid" aria-label="Demo batch metrics">
+      <div class="metric"><b>18</b><span>Total collected episodes in the demo batch</span></div>
+      <div class="metric"><b>0</b><span>Open review segments after closure</span></div>
+      <div class="metric"><b>76%</b><span>Usable segment yield, separate from episode count</span></div>
+      <div class="metric"><b>1.58h</b><span>Batch readiness lead-time proxy</span></div>
+    </div>
+
+    <figure>
+      <img src="../../../assets/images/physical-ai/physical-ai-02.png" alt="Workshop app dashboard showing batch operating view, Head Researcher escalation cases, episode review, and escalation analytics">
+      <figcaption>Dashboard view: batch operating state, Head Researcher escalation cases, all-episodes review entry point, and yield-loss signal. The figures use illustrative sample data for the portfolio reconstruction.</figcaption>
+    </figure>
+
+    <h3>Head Researcher escalation cases</h3>
+    <p>The Head Researcher lane is not a generic error list. It isolates segment-level cases that the Data PM could not safely close alone. Each row preserves the episode, selected segment, subtask goal, Data PM decision, escalation reason, escalation timestamp, final training decision, and review decision state.</p>
+    <p>That matters because the app protects expert time: the Head Researcher does not need to restart from zero or inspect every episode. They receive the cases where judgment is ambiguous or policy-sensitive, with the prior routing reason still attached.</p>
+
+    <h3>All-episodes review table</h3>
+    <p>The all-episodes table keeps decisions grounded in the original collection attempt. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability.</p>
+
+    <h2 id="episode-detail">Episode Review Detail: full-run context before segment judgment</h2>
+    <p>When a reviewer opens one episode, the app shows a full-run context page before asking the reviewer to make or inspect a segment decision. The selected episode summary separates the collection outcome from the number of usable segments. The lineage graph makes related records auditable. Inherited session context keeps collection method, robot platform, network profile, and data collector context attached to the episode.</p>
+
+    <table class="compact-table">
+      <thead>
+        <tr><th>Layer</th><th>Question it answers</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Selected episode summary</td><td>What happened to this collection attempt?</td><td>Separates episode status from segment-level training usability.</td></tr>
+        <tr><td>Inherited session context</td><td>What collection conditions produced this episode?</td><td>Helps distinguish isolated segment issues from repeated session or infrastructure problems.</td></tr>
+        <tr><td>QC Results</td><td>Which episode-level signals passed, warned, or routed a segment to review?</td><td>Uses QC as structured evidence and routing context, not as the final human decision.</td></tr>
+        <tr><td>Same-episode segment decisions</td><td>Which subtask segments are usable, excluded, or escalated?</td><td>Prevents the whole episode from being treated as a single pass/fail object.</td></tr>
+        <tr><td>Dataset package readiness</td><td>Are video, sensor, raw, and metadata export items ready?</td><td>Connects review closure to training handoff.</td></tr>
+      </tbody>
+    </table>
+
+    <p>A strong demo path is a partial-salvage real episode: the episode is not simply “good” or “bad,” because some segments can still be usable for training. That is the operational reason for drilling from episode context into selected segment review.</p>
+
+    <h2 id="segment-detail">Segment Review Detail: evidence to staged training-use decision</h2>
+    <p>Segment Review Detail is the central decision surface of the app. It focuses on one selected Subtask Segment and brings together the evidence, rubric, prior-stage decisions, final expert closure, follow-up actions, and dataset readiness around that single training-use unit.</p>
+
+    <figure>
+      <img src="../../../assets/images/physical-ai/physical-ai-03.png" alt="Workshop app segment review showing prior reviewer decisions as read-only context and Head Researcher decision workflow">
+      <figcaption>Staged review flow: Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher closure records the final training-use decision.</figcaption>
+    </figure>
+
+    <div class="split">
+      <div>
+        <h3>What the reviewer sees</h3>
+        <ul>
+          <li>selected episode and segment context</li>
+          <li>review cue window for video navigation</li>
+          <li>subtask criteria and common failure modes</li>
+          <li>decision evidence: video, sensor, raw, and metadata context</li>
+          <li>Initial Reviewer and Data PM decisions with reasons</li>
+          <li>Head Researcher closure fields for final outcome, failure code, training decision, and span treatment</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What the workflow changes</h3>
+        <ul>
+          <li>issues are localized to action context instead of vague episode-level comments</li>
+          <li>QC signals become review-routing evidence, not black-box decisions</li>
+          <li>expert review is reserved for cases that need expert judgment</li>
+          <li>segment-level decisions determine what can remain in the training path</li>
+          <li>review findings can continue into action recommendations and package readiness</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>The value is not that every boundary is perfectly hand-labeled. The value is that reviewers can ask a better operational question: which action context failed, what evidence supports that judgment, and which span should be excluded or preserved for training?</p>
+
+    <h2 id="evidence">Evidence layer: video, QC, sensor, raw, and metadata context</h2>
+    <p>The app keeps the selected segment decision grounded in evidence without turning the segment page into another episode-level QC table. A segment review can show multiple video views such as exo-top, wrist, or body camera views, plus sensor, raw, and metadata context. The evidence rows can also trace back to the QC signal and source defect when applicable.</p>
+    <p>This design keeps three things separate: the automated/rule-based QC signal, the evidence assets a reviewer inspects, and the human training-use decision. That separation is important because a warning can route a segment to review, but it should not replace reviewer judgment.</p>
+
+    <h2 id="closure">Closing the loop: review finding to follow-up action</h2>
+    <p>The workflow does not stop once a segment is marked usable or not usable. If a defect is diagnosed, the Follow-up Action Detail page connects the defect to a concrete operational action: target, owner, priority, due date, status, source defect, affected segment, episode-level Check Result, and supporting evidence.</p>
+
+    <figure>
+      <img src="../../../assets/images/physical-ai/physical-ai-04.png" alt="Workshop app Head Researcher Review Closure confirming final training decision and closing the segment review">
+      <figcaption>Head Researcher Review Closure: the final decision is recorded with earlier review context still available, then downstream follow-up and dataset readiness remain traceable.</figcaption>
+    </figure>
+
+    <p>This is the customer-value layer of the app. A review finding should not remain a passive label. It should become a handoff: who owns the follow-up, what action should happen, when it is due, and which evidence record explains why it exists.</p>
+
+    <h2 id="what-it-demonstrates">What this demonstrates</h2>
+    <table class="compact-table">
+      <thead>
+        <tr><th>Value signal</th><th>How the app shows it</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Operational diagnosis</td><td>Moves the problem from “review is impossible” to a structured workflow with batch, episode, segment, evidence, and action layers.</td></tr>
+        <tr><td>Ontology and workflow judgment</td><td>Separates episode status, segment training decision, QC signal, evidence asset, defect attribution, action recommendation, and export readiness.</td></tr>
+        <tr><td>Expert time protection</td><td>Uses Initial Reviewer and Data PM stages to preserve context and escalate only the cases requiring Head Researcher judgment.</td></tr>
+        <tr><td>Training-readiness focus</td><td>Shows usable segment yield and dataset package readiness rather than assuming collected data is ready for training.</td></tr>
+        <tr><td>Actionability</td><td>Turns recurring defects into follow-up actions with owner, priority, due date, and source-evidence traceability.</td></tr>
+      </tbody>
+    </table>
+
+    <p>For a Deployment Strategist role, this is the part I would want to discuss: the work is not only about building screens. It is about finding the real operating constraint, defining the right decision grain, and shaping a workflow that lets a customer move from messy evidence to action.</p>
+
+    <ul class="pill-list" aria-label="Workshop app focus areas">
+      <li>Physical AI data</li>
+      <li>Foundry ontology</li>
+      <li>Workshop app</li>
+      <li>staged review workflow</li>
+      <li>training-readiness judgment</li>
+      <li>evidence-to-action traceability</li>
+    </ul>
+
+    <p class="contact-note">If you would like to see the Workshop app directly, please contact me at ‘abby.dw.heo@gmail.com’ and I can provide access.</p>
+
+    <footer>
+      Seoul, Korea · Updated June 2026
+    </footer>
+  </main>
+</body>
+</html>
