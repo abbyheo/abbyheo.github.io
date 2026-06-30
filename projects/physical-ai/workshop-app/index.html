@@ -415,10 +415,10 @@
       <div class="flow-step">
         <div class="num">PATH 2</div>
         <div class="name">Episode Drilldown</div>
-        <div class="desc">Dashboard &rarr; B. All Episodes &rarr; Episode Review Detail &rarr; Segment Review Detail. The full-context path for inspecting a collection attempt end to end.</div>
+        <div class="desc">Dashboard &rarr; B. All Episodes &rarr; Episode Review Detail &rarr; Segment Review Detail. The full-context path for inspecting a collection run end to end.</div>
       </div>
     </div>
-    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection-attempt context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
+    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
   </div>
 </section>
 
@@ -483,7 +483,7 @@
       <div class="panel-label">Dashboard section</div>
       <h4>Open any episode &mdash; especially failed or partially salvaged runs</h4>
       <div class="grain">grain: one row = one Collection Episode</div>
-      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection attempt. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
+      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection run. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
     </div>
     <figure>
       <div class="shot">
@@ -625,7 +625,7 @@
     <div class="panel-card">
       <h4>Open any episode &mdash; especially failed or partially salvaged runs</h4>
       <div class="grain">grain: one row = one Collection Episode</div>
-      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection attempt. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
+      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection run. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
     </div>
     <figure>
       <div class="shot">
@@ -644,7 +644,7 @@
           <tr><th>Layer</th><th>Question it answers</th><th>Why it matters</th></tr>
         </thead>
         <tbody>
-          <tr><td class="strong">Selected Episode Summary</td><td>What happened to this collection attempt?</td><td>Separates episode status from segment-level training usability.</td></tr>
+          <tr><td class="strong">Selected Episode Summary</td><td>What happened in this episode?</td><td>Separates episode status from segment-level training usability.</td></tr>
           <tr><td class="strong">Episode Lineage Graph</td><td>How does this episode relate to other records?</td><td>Makes related records auditable.</td></tr>
           <tr><td class="strong">Inherited Session Context</td><td>What collection conditions produced this episode?</td><td>Distinguishes isolated segment issues from repeated session or infrastructure problems.</td></tr>
           <tr><td class="strong">QC Results</td><td>Which episode-level signals passed, warned, or routed a segment to review?</td><td>Uses QC as structured evidence and routing context, not as the final human decision.</td></tr>
@@ -666,7 +666,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/episode-review-dataset-readiness.png" alt="Dataset Package Readiness" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Episode Review Detail for EP_018: full collection-attempt context before any segment-level training decision is made.</figcaption>
+      <figcaption>Episode Review Detail for EP_018: full collection context before any segment-level training decision is made.</figcaption>
     </figure>
 
     <p>EP_018 has 7 total segments and 3 usable segments &mdash; a strong demo case because the episode is not simply &ldquo;good&rdquo; or &ldquo;bad.&rdquo; That partial outcome is the operational reason for drilling further into segment-level review.</p>
