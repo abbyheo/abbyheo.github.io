@@ -4,8 +4,8 @@ This folder contains a small public sample of directly collected Physical AI dat
 
 ## Episodes
 
-- `EP_017` / source episode `EP_V5_001_LF` — Pick and Place, scenario_301, one small cube
-- `EP_018` / source episode `EP_V5_003_LF` — Pick and Place, scenario_303, one flat rectangle
+- `EP_017` — Pick and Place, `SCN_PICK_SINGLE_CUBE_CENTER`, SO-101 pick/place with one centered small cube
+- `EP_018` — Pick and Place, `SCN_PICK_IRREGULAR_OBJECT_CENTER`, SO-101 pick/place with one centered irregular object
 
 Each episode keeps the basic LeRobot layout:
 
@@ -22,8 +22,18 @@ EP_017 or EP_018/
 └── episode_context.json
 ```
 
+## Viewer page
+
+`index.html` is a static GitHub Pages viewer with:
+
+- one-button synchronized playback for the wrist/top/belly camera views;
+- a lightweight state/action signal chart generated from the LeRobot parquet files;
+- links to raw parquet, metadata, video, manifest, and context files.
+
+The official Hugging Face LeRobot Dataset Visualizer is a Next/Docker app for Hugging Face-hosted datasets. This folder keeps the portfolio surface static while adopting the same inspection idea: synchronized videos plus time-aligned state/action signals.
+
 ## Public-copy note
 
-Local machine paths and device-port strings were redacted from `episode_context.json` before publication. `.DS_Store` files were omitted. The LeRobot data files, metadata files, and MP4 videos are preserved.
+`episode_context.json` is generated from the live Google Sheet and organized by source tab. Local machine paths and device-port strings are omitted. Foundry `media_reference` payloads are redacted in the public JSON. `.DS_Store` files are omitted. The LeRobot data files, metadata files, and MP4 videos are preserved.
 
-See `manifest.json` for file sizes and SHA-256 hashes.
+See `manifest.json` for file sizes and SHA-256 hashes. See `sensor_preview.json` for the static state/action chart data.

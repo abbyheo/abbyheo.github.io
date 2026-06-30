@@ -1,24 +1,40 @@
 {
   "title": "Directly collected Physical AI LeRobot data sample",
-  "public_copy_note": "Local machine paths and device ports were redacted from episode_context.json. .DS_Store files were omitted. LeRobot data, metadata, and video files are preserved.",
+  "public_copy_note": "episode_context.json is generated from the live Google Sheet and organized by source tab. Local machine paths/device ports and Foundry media_reference payloads are redacted/omitted. .DS_Store files are omitted.",
+  "spreadsheet_source": {
+    "spreadsheet_title": "Physical AI Data Collection Schema_English",
+    "spreadsheet_id": "1XxcrMW-HBBWj5crbAXOya-jjjIh8M011CVjP2oeMfG4",
+    "spreadsheet_url": "https://docs.google.com/spreadsheets/d/1XxcrMW-HBBWj5crbAXOya-jjjIh8M011CVjP2oeMfG4/edit"
+  },
+  "supporting_files": [
+    {
+      "path": "index.html",
+      "description": "static viewer page with synchronized camera playback and state/action chart"
+    },
+    {
+      "path": "sensor_preview.json",
+      "description": "lightweight state/action time-series preview generated from LeRobot parquet files"
+    },
+    {
+      "path": "README.md",
+      "description": "public data sample notes"
+    }
+  ],
   "episodes": [
     {
       "display_id": "EP_017",
-      "source_episode_id": "EP_V5_001_LF",
-      "recorded_at": "2026-03-31T22:58:10",
-      "task": "Pick and Place",
-      "scenario": "scenario_301",
-      "collection_method": "leader_follower_arm",
-      "object": {
-        "type": "cube",
-        "size": "small",
-        "position": "center",
-        "count": "1",
-        "distractors": "0"
-      },
-      "workflow_steps": "1:ST_001 > 2:ST_002 > 3:ST_003 > 4:ST_004",
-      "workflow_conditions": "2:target_identified | 3:object_grasped_stably | 4:object_at_destination",
-      "robot_type": "so_follower",
+      "episode_id": "EP_017",
+      "recorded_at": "2026-05-15 10:04:00",
+      "task_id": "TASK_PICK_PLACE_BIN_V1",
+      "task_name": "Pick and place into bin",
+      "scenario_id": "SCN_PICK_SINGLE_CUBE_CENTER",
+      "scenario_label": "SO-101 pick/place: single cube centered",
+      "source_type": "real",
+      "collection_method_id": "CM_LEADER_FOLLOWER_ARM",
+      "method_type": "leader_follower_arm",
+      "robot_model": "SO-101",
+      "episode_status": "pass",
+      "primary_issue_type": "",
       "frames": 428,
       "fps": 25,
       "duration_seconds": 17.12,
@@ -34,20 +50,20 @@
         "index",
         "task_index"
       ],
-      "total_bytes": 3050120,
+      "total_bytes": 3136699,
       "videos": [
         {
-          "camera": "wrist",
+          "camera": "ego_wrist",
           "path": "EP_017/videos/observation.images.wrist/chunk-000/file-000.mp4",
           "bytes": 919385
         },
         {
-          "camera": "top",
+          "camera": "exo_top",
           "path": "EP_017/videos/observation.images.top/chunk-000/file-000.mp4",
           "bytes": 1079802
         },
         {
-          "camera": "belly",
+          "camera": "ego_belly",
           "path": "EP_017/videos/observation.images.belly/chunk-000/file-000.mp4",
           "bytes": 942720
         }
@@ -60,8 +76,8 @@
         },
         {
           "path": "EP_017/episode_context.json",
-          "bytes": 2417,
-          "sha256": "3546cb7e8a1f4f6494494c8d99a872332bc6ae5efbb0ffbf180051d0fb63ac88"
+          "bytes": 88996,
+          "sha256": "544b301c6967ef20f84ceb8cfa16f1fce6dc7ac5e7d4e0bf848432cd94987aef"
         },
         {
           "path": "EP_017/meta/episodes/chunk-000/file-000.parquet",
@@ -102,21 +118,18 @@
     },
     {
       "display_id": "EP_018",
-      "source_episode_id": "EP_V5_003_LF",
-      "recorded_at": "2026-03-31T23:18:30",
-      "task": "Pick and Place",
-      "scenario": "scenario_303",
-      "collection_method": "leader_follower_arm",
-      "object": {
-        "type": "rectangle",
-        "size": "flat",
-        "position": "center",
-        "count": "1",
-        "distractors": "0"
-      },
-      "workflow_steps": "1:ST_001 > 2:ST_002 > 3:ST_003 > 4:ST_004",
-      "workflow_conditions": "2:target_identified | 3:object_grasped_stably | 4:object_at_destination",
-      "robot_type": "so_follower",
+      "episode_id": "EP_018",
+      "recorded_at": "2026-05-15 10:05:05",
+      "task_id": "TASK_PICK_PLACE_BIN_V1",
+      "task_name": "Pick and place into bin",
+      "scenario_id": "SCN_PICK_IRREGULAR_OBJECT_CENTER",
+      "scenario_label": "SO-101 pick/place: centered irregular object",
+      "source_type": "real",
+      "collection_method_id": "CM_LEADER_FOLLOWER_ARM",
+      "method_type": "leader_follower_arm",
+      "robot_model": "SO-101",
+      "episode_status": "partial_salvage",
+      "primary_issue_type": "data_collector_error",
       "frames": 725,
       "fps": 25,
       "duration_seconds": 29.0,
@@ -132,20 +145,20 @@
         "index",
         "task_index"
       ],
-      "total_bytes": 6680838,
+      "total_bytes": 6773567,
       "videos": [
         {
-          "camera": "wrist",
+          "camera": "ego_wrist",
           "path": "EP_018/videos/observation.images.wrist/chunk-000/file-000.mp4",
           "bytes": 2249137
         },
         {
-          "camera": "top",
+          "camera": "exo_top",
           "path": "EP_018/videos/observation.images.top/chunk-000/file-000.mp4",
           "bytes": 2129758
         },
         {
-          "camera": "belly",
+          "camera": "ego_belly",
           "path": "EP_018/videos/observation.images.belly/chunk-000/file-000.mp4",
           "bytes": 2181340
         }
@@ -158,8 +171,8 @@
         },
         {
           "path": "EP_018/episode_context.json",
-          "bytes": 2425,
-          "sha256": "784af6cbac9e387f841e92091c663b86518b41f4c185ceebe76b2e456fa4f674"
+          "bytes": 95154,
+          "sha256": "618f1a4baa167d4c905d9b55c64cce7e4215f56f2516c3a82b1362c5d1aa18d1"
         },
         {
           "path": "EP_018/meta/episodes/chunk-000/file-000.parquet",
