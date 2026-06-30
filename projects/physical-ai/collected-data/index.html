@@ -19,6 +19,8 @@
     .summary-card { margin:30px 0 38px; padding:20px 22px; border:1px solid var(--line); border-radius:18px; background:var(--soft); }
     .summary-card p { margin:0 0 10px; color:#263244; }
     .summary-card p:last-child { margin-bottom:0; }
+    .summary-points { margin:10px 0 0; padding-left:20px; color:#263244; }
+    .summary-points li { margin:4px 0; }
     h2 { margin:48px 0 14px; padding-top:28px; border-top:1px solid var(--line); font-size:1.08rem; letter-spacing:.06em; text-transform:uppercase; }
     h3 { margin:0 0 8px; font-size:1.28rem; line-height:1.35; }
     h4 { margin:24px 0 10px; font-size:1.02rem; }
@@ -65,7 +67,11 @@
     <p class="eyebrow">Public sample · LeRobot format</p>
     <h1>Physical AI Data Sample</h1>
     <div class="summary-card">
-      <p>EP_017 and EP_018 are the same episodes loaded into the Palantir Foundry Workshop app in the case study, published here in LeRobot format. I used a lighter version of <a href="https://github.com/huggingface/lerobot-dataset-visualizer">LeRobot Dataset Visualizer</a>: synchronized playback across all three cameras, plus a state/action signal chart drawn directly from the parquet files.</p>
+      <p>EP_017 and EP_018 are the same episodes loaded into the Palantir Foundry Workshop app in the case study: a clean pass and a partial-salvage case from the same collection session, published here in LeRobot format.</p>
+      <ul class="summary-points">
+        <li>I used a lighter version of <a href="https://github.com/huggingface/lerobot-dataset-visualizer">LeRobot Dataset Visualizer</a> to show synchronized playback across all three cameras.</li>
+        <li>The viewer also includes a state/action signal chart drawn directly from the parquet files.</li>
+      </ul>
       <div class="button-row">
         <a href="https://github.com/abbyheo/physical-ai-lerobot-sample">View Repository Folder</a>
       </div>
