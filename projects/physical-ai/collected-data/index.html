@@ -64,15 +64,12 @@
     <p class="back"><a href="../">← Back to Physical AI case study</a></p>
     <p class="eyebrow">Public sample · LeRobot format</p>
     <h1>Physical AI Data Sample</h1>
-    <p class="subtitle">Two episodes published in LeRobot format by Dahm-won (Abby) Heo.</p>
+    <p class="subtitle">Two episodes I collected and published in LeRobot format: the clean pass and the partial-salvage case from the same session.</p>
 
     <div class="summary-card">
-      <p>This page publishes EP_017 and EP_018 in LeRobot format: parquet data, LeRobot metadata, sheet-derived episode context, and three camera videos per episode.</p>
-      <p>The full Hugging Face LeRobot Dataset Visualizer is a Next/Docker app for Hugging Face-hosted datasets. For this static GitHub Pages portfolio page, I use the same inspection idea in a lightweight form: synchronized camera playback plus a state/action signal chart generated from the LeRobot parquet files.</p>
-      <p>The public copy redacts local machine paths, device-port strings, and Foundry media-reference payloads from <code>episode_context.json</code>.</p>
+      <p>EP_017 and EP_018 are the same episodes loaded into the Palantir Foundry Workshop app in the case study, published here in LeRobot format.</p>
+      <p>I used a lighter version of <a href="https://github.com/huggingface/lerobot-dataset-visualizer">LeRobot Dataset Visualizer</a>: synchronized playback across all three cameras, plus a state/action signal chart drawn directly from the parquet files.</p>
       <div class="button-row">
-        <a href="manifest.json">Download manifest JSON</a>
-        <a href="sensor_preview.json">Download sensor preview JSON</a>
         <a href="https://github.com/abbyheo/abbyheo.github.io/tree/main/projects/physical-ai/collected-data">View repository folder</a>
       </div>
     </div>
@@ -89,7 +86,7 @@
         <div class="meta-item"><span class="label">Duration</span><span class="value">17.12 seconds</span></div>
       </div>
       <div class="review-note">
-        Episode Context: EP_017 is the clean pass sample in session SESS_013. The scenario row is <code>SCN_PICK_SINGLE_CUBE_CENTER</code>, and the segment review rows mark all seven subtask windows as usable for training.
+        EP_017 is the clean pass from session SESS_013, scenario <code>SCN_PICK_SINGLE_CUBE_CENTER</code>. All seven subtask segments reviewed as usable.
       </div>
       <section class="sync-player" data-episode="EP_017" aria-label="EP_017 synchronized camera and signal viewer">
         <div class="player-controls">
@@ -122,7 +119,7 @@
             <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action</div>
           </header>
           <canvas class="sensor-canvas" data-role="sensor-canvas" aria-label="EP_017 state/action signal chart"></canvas>
-          <p class="note">Here, “sensor graph” means the time-series data in the LeRobot parquet file: robot joint state and commanded action vectors, aligned to video time.</p>
+          <p class="note">The chart reads from the LeRobot parquet file: joint state (blue) and commanded action (orange) vectors, aligned to video time.</p>
         </div>
       </section>
       <p class="note">Raw files:</p>
@@ -144,7 +141,7 @@
         <div class="meta-item"><span class="label">Duration</span><span class="value">29.00 seconds</span></div>
       </div>
       <div class="review-note warning">
-        Episode Context: EP_018 is the partial-salvage sample in session SESS_013. The scenario row is <code>SCN_PICK_IRREGULAR_OBJECT_CENTER</code>. The issue is localized to <code>SEG_018_04</code>, where the pick-object step shows repeated object drops; downstream segments recover and remain separately reviewable.
+        EP_018 is a bit of a salvage job. During the pick sequence in <code>SEG_018_04</code>, the robot struggled and kept dropping the object. I kept the data because the segments before and after were solid, and it’s a good example of how I handle partial recoveries in my workflow.
       </div>
       <section class="sync-player" data-episode="EP_018" aria-label="EP_018 synchronized camera and signal viewer">
         <div class="player-controls">
@@ -177,7 +174,7 @@
             <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action · red band = flagged segment window</div>
           </header>
           <canvas class="sensor-canvas" data-role="sensor-canvas" aria-label="EP_018 state/action signal chart"></canvas>
-          <p class="note">The red band marks the sheet-derived SEG_018_04 window routed by sensor/state-action QC and reviewed through the staged workflow.</p>
+          <p class="note">The red band is SEG_018_04, flagged by QC on the sensor signal and then reviewed through the staged workflow.</p>
         </div>
       </section>
       <p class="note">Raw files:</p>
@@ -190,15 +187,14 @@
     </article>
 
     <h2 id="format">What is included</h2>
-    <p>Each episode keeps the basic LeRobot layout:</p>
+    <p>Each episode follows the LeRobot folder structure:</p>
     <ul class="file-list">
-      <li><code>data</code>: parquet frame data</li>
-      <li><code>meta</code>: metadata</li>
-      <li><code>videos</code>: <code>observation.images.*</code> MP4 streams</li>
+      <li><code>data</code>: frame-level parquet with joint states, commanded actions, and timestamps</li>
+      <li><code>meta</code>: <code>info.json</code>, <code>stats.json</code>, <code>tasks.parquet</code>, and episode-level parquet under <code>episodes/</code></li>
+      <li><code>videos</code>: three MP4 streams (<code>observation.images.wrist</code>, <code>.top</code>, <code>.belly</code>)</li>
     </ul>
-    <p>The metadata records action and observation-state vectors, timestamp/frame indices, and three camera observations: wrist, top, and belly.</p>
-    <p>The <code>episode_context.json</code> files are now sheet-derived. Each file is organized by source tab so the public sample can be traced back to the workbook’s session, episode, scenario, QC, segment review, evidence, export, defect, metric, and recommendation rows.</p>
-    <p>This is a small portfolio sample, not a benchmark dataset. Its purpose is to make the portfolio’s Physical AI data-collection claim checkable and to show the kind of source material that the Workshop-style review workflow is meant to operate on.</p>
+    <p><code>episode_context.json</code> contains the collection context for each episode: session ID, task and scenario IDs, robot platform, collection method, episode duration, status, and segment-level review outcomes.</p>
+    <p>Two episodes, not a benchmark. The point is to make the data-collection part of the case study checkable.</p>
 
     <footer>
       Seoul, Korea · Updated June 2026
