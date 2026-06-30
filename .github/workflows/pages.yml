@@ -24,8 +24,9 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Prepare static site
         run: |
-          mkdir -p _site/assets/files _site/assets/images
+          mkdir -p _site/assets/files _site/assets/images _site/projects
           cp index.html _site/index.html
+          if [ -d projects ]; then cp -R projects/. _site/projects/; fi
           if [ -d assets/files ]; then cp -R assets/files/. _site/assets/files/; fi
           if [ -d assets/images ]; then cp -R assets/images/. _site/assets/images/; fi
       - name: Upload artifact
