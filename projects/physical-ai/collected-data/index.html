@@ -190,7 +190,13 @@
     </article>
 
     <h2 id="format">What is included</h2>
-    <p>Each episode keeps the basic LeRobot layout: <code>data/</code> parquet frame data, <code>meta/</code> metadata, and <code>videos/observation.images.*</code> MP4 streams. The metadata records action and observation-state vectors, timestamp/frame indices, and three camera observations: wrist, top, and belly.</p>
+    <p>Each episode keeps the basic LeRobot layout:</p>
+    <ul class="file-list">
+      <li><code>data</code>: parquet frame data</li>
+      <li><code>meta</code>: metadata</li>
+      <li><code>videos</code>: <code>observation.images.*</code> MP4 streams</li>
+    </ul>
+    <p>The metadata records action and observation-state vectors, timestamp/frame indices, and three camera observations: wrist, top, and belly.</p>
     <p>The <code>episode_context.json</code> files are now sheet-derived. Each file is organized by source tab so the public sample can be traced back to the workbook’s session, episode, scenario, QC, segment review, evidence, export, defect, metric, and recommendation rows.</p>
     <p>This is a small portfolio sample, not a benchmark dataset. Its purpose is to make the portfolio’s Physical AI data-collection claim checkable and to show the kind of source material that the Workshop-style review workflow is meant to operate on.</p>
 
