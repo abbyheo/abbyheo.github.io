@@ -1,0 +1,114 @@
+figure img[data-lightbox-image] {
+  cursor: zoom-in;
+}
+
+figure img[data-lightbox-image]:focus-visible {
+  outline: 3px solid rgba(29, 78, 216, 0.45);
+  outline-offset: 4px;
+}
+
+.image-lightbox-hint {
+  margin-top: 8px;
+  color: var(--muted, #5f6b7a);
+  font-size: 0.86rem;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.image-lightbox[aria-hidden="false"] {
+  display: flex;
+}
+
+.image-lightbox__panel {
+  position: relative;
+  width: min(100%, 1440px);
+  max-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.image-lightbox__image-wrap {
+  overflow: auto;
+  max-height: calc(100vh - 150px);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+
+.image-lightbox__image {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  margin: 0 auto;
+}
+
+.image-lightbox__caption {
+  color: #e5e7eb;
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.image-lightbox__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-lightbox__open,
+.image-lightbox__close {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.image-lightbox__open {
+  padding: 9px 13px;
+}
+
+.image-lightbox__close {
+  padding: 9px 13px;
+  cursor: pointer;
+}
+
+.image-lightbox__open:hover,
+.image-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+}
+
+body.image-lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .image-lightbox {
+    padding: 14px;
+  }
+
+  .image-lightbox__panel {
+    max-height: calc(100vh - 28px);
+  }
+
+  .image-lightbox__image-wrap {
+    max-height: calc(100vh - 140px);
+  }
+}
