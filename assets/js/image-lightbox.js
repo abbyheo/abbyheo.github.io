@@ -66,19 +66,6 @@
     img.setAttribute('tabindex', '0');
     img.setAttribute('aria-label', 'Open full-size image: ' + getCaption(img));
 
-    var figure = img.closest('figure');
-    if (figure && !figure.querySelector('.image-lightbox-hint')) {
-      var hint = document.createElement('div');
-      hint.className = 'image-lightbox-hint';
-      hint.textContent = 'Click image to view full size.';
-      var figcaption = figure.querySelector('figcaption');
-      if (figcaption) {
-        figcaption.insertAdjacentElement('afterend', hint);
-      } else {
-        figure.appendChild(hint);
-      }
-    }
-
     img.addEventListener('click', function () { openLightbox(img); });
     img.addEventListener('keydown', function (event) {
       if (event.key === 'Enter' || event.key === ' ') {

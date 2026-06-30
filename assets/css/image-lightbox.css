@@ -7,12 +7,6 @@ figure img[data-lightbox-image]:focus-visible {
   outline-offset: 4px;
 }
 
-.image-lightbox-hint {
-  margin-top: 8px;
-  color: var(--muted, #5f6b7a);
-  font-size: 0.86rem;
-}
-
 .image-lightbox {
   position: fixed;
   inset: 0;
