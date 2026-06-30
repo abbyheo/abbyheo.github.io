@@ -551,7 +551,7 @@
       <li>Initial Reviewer Decision &mdash; read-only</li>
       <li>Data PM Decision &mdash; read-only</li>
       <li>Head Researcher&rsquo;s Final Closure</li>
-      <li>Follow-up Action (links to Follow-up Action Detail)</li>
+      <li>Follow-up Actions in the Same Episode &mdash; row click opens Follow-up Action Detail</li>
       <li>Dataset Package Readiness</li>
     </ul>
 
@@ -579,8 +579,16 @@
       <figcaption>Head Researcher Review Closure: reviews escalated evidence, confirms the final training decision, and closes the segment review.</figcaption>
     </figure>
 
-    <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (if a defect is diagnosed)</div>
-    <p>If the closure identifies a defect, the reviewer can click through to a recommended action: target, owner, priority, due date, status, source defect, affected segment, and supporting evidence.</p>
+    <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (opened from a follow-up action row)</div>
+    <p>If the closure diagnoses a defect, the reviewer first sees <strong>G. Follow-up Actions in the Same Episode</strong> inside Segment Review Detail. The reviewer then clicks the relevant follow-up action row. That row-level drilldown opens <strong>Follow-up Action Detail</strong>, where the action owner, status, due date, source defect, affected segment, and supporting evidence can be reviewed.</p>
+    <figure>
+      <div class="shot">
+        <div class="shot-single">
+          <img src="../../../assets/images/physical-ai/workshop-app/segment-review-follow-up-actions-table.png" alt="Follow-up Actions in the Same Episode table with selected action row" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <figcaption>The entry point is the selected row in G. Follow-up Actions in the Same Episode; clicking that action row opens Follow-up Action Detail.</figcaption>
+    </figure>
     <figure>
       <div class="shot">
         <div class="shot-sequence">
@@ -588,7 +596,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/follow-up-source-defect.png" alt="Follow-up Action Detail source defect summary" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>A review finding becomes a handoff: who owns the follow-up, what action should happen, when it is due, and which evidence record explains why it exists.</figcaption>
+      <figcaption>After the row click, Follow-up Action Detail shows the operational handoff: who owns the action, what should happen, when it is due, and which defect/evidence record explains why it exists.</figcaption>
     </figure>
 
     <p>This path protects expert time: the Head Researcher never has to open an episode they don&rsquo;t need to see. They land directly on the case, with full upstream context already attached.</p>
