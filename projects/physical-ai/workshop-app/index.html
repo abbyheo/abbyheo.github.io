@@ -209,6 +209,31 @@
   }
   .formula-note code { display: inline-block; margin: 4px 0; }
 
+  .lineage-explainer {
+    margin: 20px 0 26px;
+  }
+  .lineage-tree {
+    margin: 18px 0 4px;
+    padding: 18px;
+    overflow-x: auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+  }
+  .lineage-tree code {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+
   /* ---------- Figure / screenshot blocks ---------- */
   figure {
     margin: 24px 0;
@@ -641,6 +666,27 @@
           <tr><td class="strong">Dataset Package Readiness</td><td>Are video, sensor, raw, and metadata export items ready?</td><td>Connects review closure to training handoff.</td></tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="lineage-explainer">
+      <p>The Episode Lineage Graph is not a reviewer-facing primary screen. It is a traceability template that shows every ontology object connected to the selected Collection Episode: which session it came from, what export-readiness items exist, which QC signals fired, how those signals routed to segment review, and whether a defect attribution led to a follow-up action. The graph is small in the screenshot, so here is the structure it shows:</p>
+      <pre class="lineage-tree"><code>Collection Episode (EP_018)
+├─ Collection Session (SESS_013)
+│  └─ session / collector / method / platform collection context
+├─ Dataset Export Items
+│  └─ raw / video / sensor / metadata export-readiness items
+├─ Check Results
+│  └─ episode-level check/QC rows:
+│     automated/rule-based signals plus optional issue-domain support rows
+└─ Subtask Segment rows
+   ├─ SEG_018_01 → Evidence Asset rows
+   ├─ SEG_018_02 → Evidence Asset rows
+   ├─ SEG_018_03 → Evidence Asset rows
+   ├─ SEG_018_04 → Evidence Asset rows → Defect Attribution (DEF_018_04)
+   │              → Action Recommendation (REC_018_04)
+   ├─ SEG_018_05 → Evidence Asset rows
+   ├─ SEG_018_06 → Evidence Asset rows
+   └─ SEG_018_07 → Evidence Asset rows</code></pre>
     </div>
 
     <figure>
