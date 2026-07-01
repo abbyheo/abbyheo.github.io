@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Physical AI Data Sample by Dahm-won (Abby) Heo</title>
-  <meta name="description" content="A small public sample of directly collected Physical AI data in LeRobot format, including EP_017 and EP_018 synchronized camera views, metadata, parquet files, and a state/action signal preview.">
+  <meta name="description" content="A small public sample of directly collected Physical AI data in LeRobot format, including EP_017 and EP_018 synchronized camera views, metadata, parquet files, and a state/action signal graph.">
   <style>
     :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#f8fafc; --panel:#ffffff; --code:#0f172a; --blue:#2563eb; --orange:#f97316; --warn:#fee2e2; }
     * { box-sizing:border-box; }
@@ -118,7 +118,7 @@
         </div>
         <div class="sensor-panel">
           <header>
-            <h4>State/action signal preview</h4>
+            <h4>State/action signal graph</h4>
             <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action</div>
           </header>
           <canvas class="sensor-canvas" data-role="sensor-canvas" aria-label="EP_017 state/action signal chart"></canvas>
@@ -144,7 +144,7 @@
         <div class="meta-item"><span class="label">Duration</span><span class="value">29.00 seconds</span></div>
       </div>
       <div class="review-note warning">
-        EP_018 is a bit of a salvage job. During the pick sequence in <code>SEG_018_04</code>, the robot struggled and kept dropping the object. I kept the data because the segments before and after were solid, and it’s a good example of how I handle partial recoveries in my workflow.
+        EP_018 is a partial-salvage case from session SESS_013. During the pick sequence in <code>SEG_018_04</code>, the robot repeatedly dropped the object. The segments before and after were solid, so the episode was kept with the failed segment excluded.
       </div>
       <section class="sync-player" data-episode="EP_018" aria-label="EP_018 synchronized camera and signal viewer">
         <div class="player-controls">
@@ -173,7 +173,7 @@
         </div>
         <div class="sensor-panel">
           <header>
-            <h4>State/action signal preview</h4>
+            <h4>State/action signal graph</h4>
             <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action · red band = flagged segment window</div>
           </header>
           <canvas class="sensor-canvas" data-role="sensor-canvas" aria-label="EP_018 state/action signal chart"></canvas>
@@ -370,7 +370,7 @@
         })
         .catch(function () {
           document.querySelectorAll('.sensor-panel .note').forEach(function (note) {
-            note.textContent = 'Sensor preview could not be loaded. Raw parquet files remain available below.';
+            note.textContent = 'Sensor graph could not be loaded. Raw parquet files remain available below.';
           });
         });
     }());
