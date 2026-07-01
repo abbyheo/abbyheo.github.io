@@ -7,63 +7,60 @@
 <meta name="description" content="A Palantir Foundry Workshop app walkthrough for turning Physical AI data evidence into staged training-readiness decisions and follow-up actions.">
 <style>
   :root {
-    --bg: #0b0e14;
-    --bg-panel: #11151f;
-    --bg-card: #161b27;
-    --border: #232938;
-    --text: #e7e9ee;
-    --text-dim: #97a1b3;
-    --text-faint: #5d6679;
-    --accent: #5b8cff;
-    --accent-soft: rgba(91, 140, 255, 0.12);
-    --good: #46c98f;
-    --warn: #e8a23d;
+    --bg: #0a0d12;
+    --bg-panel: #10141c;
+    --bg-card: #121722;
+    --border: #2a3140;
+    --border-soft: #1c2230;
+    --text: #eceff4;
+    --text-dim: #a9b1c0;
+    --text-faint: #747f92;
+    --accent: #8bb4ff;
+    --accent-soft: rgba(139, 180, 255, 0.10);
+    --good: #5fd3a0;
+    --warn: #f0b35a;
     --serif: "Source Serif 4", Georgia, "Noto Serif KR", serif;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR", sans-serif;
     --mono: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
     font-family: var(--sans);
-    line-height: 1.65;
+    line-height: 1.66;
     font-size: 16px;
   }
 
-  a { color: var(--accent); text-decoration: none; }
+  a { color: var(--accent); text-decoration: none; text-underline-offset: 3px; }
   a:hover { text-decoration: underline; }
   a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
   .wrap {
-    max-width: 820px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 24px;
   }
 
-  /* ---------- Top nav ---------- */
   .topnav {
     border-bottom: 1px solid var(--border);
-    padding: 18px 0;
+    padding: 16px 0;
     font-size: 14px;
     color: var(--text-dim);
   }
   .topnav .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
 
-  /* ---------- Hero ---------- */
   .hero {
-    padding: 56px 0 36px;
+    padding: 58px 0 38px;
     border-bottom: 1px solid var(--border);
   }
   .eyebrow {
     font-family: var(--mono);
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 14px;
@@ -71,38 +68,43 @@
   h1 {
     font-family: var(--serif);
     font-weight: 600;
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.2;
+    font-size: clamp(30px, 4vw, 43px);
+    line-height: 1.16;
     margin: 0 0 18px;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
   .lede {
     font-size: 18px;
     color: var(--text-dim);
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 0 22px;
   }
   .sub {
     font-size: 15.5px;
     color: var(--text-dim);
-    max-width: 640px;
+    max-width: 700px;
   }
 
+  .scope-note,
+  .formula-note,
+  .panel-card,
+  .path-trail,
+  .cta-box {
+    background: var(--bg-panel);
+    border: 0;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
+    color: var(--text-dim);
+  }
   .scope-note {
     margin-top: 28px;
-    padding: 16px 18px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 4px;
+    padding: 14px 18px;
     font-size: 14.5px;
-    color: var(--text-dim);
   }
   .scope-note strong { color: var(--text); }
 
-  /* ---------- Section scaffolding ---------- */
   section.block {
-    padding: 48px 0;
+    padding: 50px 0;
     border-bottom: 1px solid var(--border);
   }
   section.block:last-of-type { border-bottom: none; }
@@ -116,9 +118,9 @@
   }
   h3 {
     font-family: var(--sans);
-    font-weight: 600;
+    font-weight: 650;
     font-size: 17px;
-    margin: 32px 0 12px;
+    margin: 34px 0 12px;
     color: var(--text);
   }
   p { color: var(--text-dim); margin: 0 0 16px; }
@@ -133,22 +135,22 @@
     background: var(--bg-panel);
     border: 1px solid var(--border);
     padding: 1px 6px;
-    border-radius: 3px;
-    color: #b9c6e8;
+    border-radius: 0;
+    color: #c3cff0;
   }
 
-  /* ---------- Workflow map ---------- */
   .flow {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 10px;
+    gap: 12px;
     margin: 24px 0 8px;
   }
   .flow-step {
-    background: var(--bg-card);
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 14px 14px 16px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
+    padding: 14px 16px 16px;
   }
   .flow-step .num {
     font-family: var(--mono);
@@ -157,7 +159,7 @@
     margin-bottom: 8px;
   }
   .flow-step .name {
-    font-weight: 600;
+    font-weight: 650;
     font-size: 14.5px;
     color: var(--text);
     margin-bottom: 4px;
@@ -167,11 +169,8 @@
     color: var(--text-faint);
     line-height: 1.5;
   }
-  .flow-arrow-row {
-    display: none;
-  }
+  .flow-arrow-row { display: none; }
 
-  /* ---------- KPI cards ---------- */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -180,9 +179,9 @@
   }
   @media (max-width: 700px) { .kpi-grid { grid-template-columns: 1fr 1fr; } }
   .kpi-card {
-    background: var(--bg-card);
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 0;
     padding: 16px 16px 14px;
   }
   .kpi-card .val {
@@ -200,25 +199,20 @@
 
   .formula-note {
     margin-top: 14px;
-    padding: 14px 16px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    padding: 14px 18px;
     font-size: 13.5px;
-    color: var(--text-dim);
   }
   .formula-note code { display: inline-block; margin: 4px 0; }
 
-  .lineage-explainer {
-    margin: 20px 0 26px;
-  }
+  .lineage-explainer { margin: 20px 0 26px; }
   .lineage-tree {
     margin: 18px 0 4px;
     padding: 18px;
     overflow-x: auto;
-    background: var(--bg-panel);
+    background: #080b10;
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
     color: var(--text-dim);
     font-family: var(--mono);
     font-size: 13px;
@@ -234,44 +228,37 @@
     font-size: inherit;
   }
 
-  /* ---------- Figure / screenshot blocks ---------- */
-  figure {
-    margin: 24px 0;
-  }
+  figure { margin: 28px 0 38px; }
   .shot {
-    background: var(--bg-panel);
+    background: transparent;
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
   }
   .shot img {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 0;
   }
   .shot-single {
     display: grid;
-    background: var(--border);
+    background: var(--bg-panel);
   }
   .shot-sequence {
     display: grid;
-    gap: 16px;
-    padding: 14px;
+    gap: 18px;
+    padding: 16px;
     background: var(--bg-panel);
   }
   .shot-single img,
-  .shot-sequence img {
-    background: var(--bg);
-  }
+  .shot-sequence img { background: var(--bg); }
   .shot-sequence img {
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 0;
   }
   @media (max-width: 700px) {
-    .shot-sequence {
-      gap: 12px;
-      padding: 10px;
-    }
+    .shot-sequence { gap: 12px; padding: 10px; }
   }
   figcaption {
     margin-top: 10px;
@@ -281,7 +268,6 @@
     line-height: 1.5;
   }
 
-  /* ---------- Table ---------- */
   .tbl-wrap { overflow-x: auto; margin: 18px 0; }
   table {
     width: 100%;
@@ -295,22 +281,17 @@
     vertical-align: top;
   }
   th {
-    color: var(--text);
-    font-weight: 600;
+    color: var(--text-faint);
+    font-weight: 650;
     font-size: 12.5px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    color: var(--text-faint);
   }
   td { color: var(--text-dim); }
   td.strong { color: var(--text); }
 
-  /* ---------- Sub-panel cards (A/B/C dashboard sections) ---------- */
   .panel-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 22px 24px;
+    padding: 16px 18px;
     margin: 18px 0;
   }
   .panel-card .panel-label {
@@ -318,7 +299,7 @@
     font-size: 12px;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     margin-bottom: 8px;
   }
   .panel-card h4 {
@@ -333,7 +314,6 @@
     margin-bottom: 12px;
   }
 
-  /* ---------- Path / breadcrumb ---------- */
   .path-trail {
     display: flex;
     align-items: center;
@@ -341,27 +321,22 @@
     gap: 8px;
     font-family: var(--mono);
     font-size: 13px;
-    color: var(--text-faint);
     margin: 0 0 24px;
     padding: 12px 16px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 6px;
   }
   .path-trail .step { color: var(--text-dim); }
-  .path-trail .step.current { color: var(--accent); font-weight: 600; }
+  .path-trail .step.current { color: var(--accent); font-weight: 650; }
   .path-trail .arrow { color: var(--text-faint); }
 
   .path-section-label {
     font-family: var(--mono);
     font-size: 12px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 10px;
   }
 
-  /* ---------- Tags ---------- */
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -371,26 +346,20 @@
   .tag {
     font-family: var(--mono);
     font-size: 12.5px;
-    background: var(--accent-soft);
-    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 0;
   }
 
-  /* ---------- Footer / CTA ---------- */
-  .closing {
-    padding: 44px 0 64px;
-  }
+  .closing { padding: 44px 0 64px; }
   .cta-box {
     margin-top: 24px;
-    padding: 22px 24px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    padding: 16px 18px;
     font-size: 14.5px;
-    color: var(--text-dim);
   }
-  .cta-box a { font-weight: 600; }
+  .cta-box a { font-weight: 650; }
 
   .meta-line {
     margin-top: 36px;
