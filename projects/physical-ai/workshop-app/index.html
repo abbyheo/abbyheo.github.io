@@ -390,37 +390,10 @@
   <div class="wrap">
     <div class="eyebrow">Foundry Workshop app walkthrough &middot; Physical AI data operations</div>
     <h1>Physical AI Data Review Console</h1>
-    <p class="lede">A Palantir Foundry Workshop app that connects episode context, video/QC evidence, staged human review, defect attribution, and follow-up actions into a workflow for training handoff.</p>
-    <p class="sub">This page is a closer walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app is not a generic dashboard. It models how a team can move from messy Physical AI data collection results to review decisions, expert escalation, training-readiness judgment, and operational follow-up.</p>
-
-    <div class="scope-note">
-      <strong>Scope note.</strong> This app uses representative demo data and is a portfolio reconstruction of the original workflow. KPI values are calculated live from the underlying object data using defined formulas; the underlying episode and segment records are demo data, not measured outcomes from the original project. QC signals support human review; they do not automatically decide training readiness. Segment windows are review cue windows for video navigation and action-context review, not claims of perfect hand-labeled action boundaries. The role-specific views show staged review screens and decision fields, not full production RBAC.
-    </div>
+    <p class="sub">This is a walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app models how a team moves from collected robot episodes to staged review decisions, expert escalation, and training handoff. It uses representative demo data.</p>
+    <p class="sub">The premise is that collected episodes are not automatically training-ready data. The app&rsquo;s job is to show where each episode breaks down, who should judge it, and what happens after the decision.</p>
   </div>
 </header>
-
-<section class="block">
-  <div class="wrap">
-    <h2>Why this app exists</h2>
-    <p>Physical AI data review is not just a question of collecting more robot episodes. A collected episode may pass, fail, or be partially salvageable. Evidence can be scattered across video, sensor checks, raw packages, metadata, reviewer notes, and downstream export items. If the team only sees a flat pass/fail list, it cannot tell which segment is usable, why a case needs expert judgment, or what should change in future collection.</p>
-    <p>The app&rsquo;s operating thesis is simple: collected episodes are not automatically training-ready data. The review system has to preserve the full collection context, localize issues to the relevant subtask/action context, record staged reviewer judgment, and connect the decision to dataset readiness and follow-up actions.</p>
-
-    <h3>Two ways into a decision</h3>
-    <div class="flow">
-      <div class="flow-step">
-        <div class="num">PATH 1</div>
-        <div class="name">HR Escalation Lane</div>
-        <div class="desc">Dashboard &rarr; A. Head Researcher Escalation Cases &rarr; Segment Review Detail. The fast path for cases already routed to expert judgment.</div>
-      </div>
-      <div class="flow-step">
-        <div class="num">PATH 2</div>
-        <div class="name">Episode Drilldown</div>
-        <div class="desc">Dashboard &rarr; B. All Episodes &rarr; Episode Review Detail &rarr; Segment Review Detail. The full-context path for inspecting a collection run end to end.</div>
-      </div>
-    </div>
-    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
-  </div>
-</section>
 
 <section class="block">
   <div class="wrap">
@@ -447,8 +420,7 @@
     </div>
 
     <div class="formula-note">
-      Each KPI is computed from object data rather than typed in as a static number:
-      <br><code>Open Review Segments = count(Subtask Segment where review_decision_state &ne; made)</code>
+      <code>Open Review Segments = count(Subtask Segment where review_decision_state &ne; made)</code>
       <br><code>Usable Segment Yield = count(final_training_decision = usable_for_training) &divide; count(all Subtask Segment rows) &times; 100</code>
       <br><code>Batch Readiness Lead Time = latest export_ready_at &minus; earliest episode_collection_started_at</code>
     </div>
@@ -465,9 +437,9 @@
     <h3>A. Head Researcher escalation cases</h3>
     <div class="panel-card">
       <div class="panel-label">Dashboard section</div>
-      <h4>Review Data PM escalations that require Head Researcher judgment</h4>
+      <h4>Segment-level cases escalated from Data PM to Head Researcher</h4>
       <div class="grain">grain: one row = one Subtask Segment escalated from Data PM to Head Researcher</div>
-      <p style="margin-bottom:0;">This is not a generic error list. It isolates segment-level cases that the Data PM could not safely close alone. Each row preserves the episode, selected segment, subtask goal, Data PM decision, escalation reason, escalation timestamp, final training decision, and review decision state &mdash; so the Head Researcher does not need to restart from zero or inspect every episode. They receive the cases where judgment is ambiguous or policy-sensitive, with the prior routing reason still attached.</p>
+      <p style="margin-bottom:0;">Detailed walkthrough in Path 1 below.</p>
     </div>
     <figure>
       <div class="shot">
@@ -481,9 +453,9 @@
     <h3>B. All-episodes review table</h3>
     <div class="panel-card">
       <div class="panel-label">Dashboard section</div>
-      <h4>Open any episode &mdash; especially failed or partially salvaged runs</h4>
+      <h4>All collected episodes with status, primary issue, and entry point for segment-level drilldown</h4>
       <div class="grain">grain: one row = one Collection Episode</div>
-      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection run. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
+      <p style="margin-bottom:0;">Detailed walkthrough in Path 2 below.</p>
     </div>
     <figure>
       <div class="shot">
@@ -514,6 +486,25 @@
 
 <section class="block">
   <div class="wrap">
+    <h2>Two ways into a decision</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">PATH 1</div>
+        <div class="name">HR Escalation Lane</div>
+        <div class="desc">Dashboard &rarr; A. Head Researcher Escalation Cases &rarr; Segment Review Detail. The fast path for cases already routed to expert judgment.</div>
+      </div>
+      <div class="flow-step">
+        <div class="num">PATH 2</div>
+        <div class="name">Episode Drilldown</div>
+        <div class="desc">Dashboard &rarr; B. All Episodes &rarr; Episode Review Detail &rarr; Segment Review Detail. The full-context path for inspecting a collection run end to end.</div>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
     <h2>Path 1 &middot; Head Researcher escalation lane</h2>
     <p class="lead-p">This is the expert-judgment shortcut. From the Dashboard, the Head Researcher opens <strong>A. Head Researcher Escalation Cases</strong> and clicks directly into the segment that needs their judgment &mdash; skipping the full episode context, because the case has already been routed to them with a reason attached.</p>
 
@@ -522,7 +513,7 @@
       <span class="arrow">&rarr;</span>
       <span class="step">A. Head Researcher Escalation Cases</span>
       <span class="arrow">&rarr;</span>
-      <span class="step current">click selected segment (e.g. SEG_003_001)</span>
+      <span class="step current">click selected segment (e.g. SEG_018_04)</span>
       <span class="arrow">&rarr;</span>
       <span class="step current">Segment Review Detail &mdash; HR Escalation Lane</span>
     </div>
@@ -551,7 +542,7 @@
       <li>Initial Reviewer Decision &mdash; read-only</li>
       <li>Data PM Decision &mdash; read-only</li>
       <li>Head Researcher&rsquo;s Final Closure</li>
-      <li>Follow-up Actions in the Same Episode &mdash; row click opens Follow-up Action Detail</li>
+      <li>Follow-up Action (links to Follow-up Action Detail)</li>
       <li>Dataset Package Readiness</li>
     </ul>
 
@@ -578,8 +569,8 @@
       <figcaption>Staged review flow:<br>- Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher&rsquo;s closure records the final training-use decision.<br>- The Head Researcher reviews escalated cases and evidence, confirms the final training decision, and closes the segment review.</figcaption>
     </figure>
 
-    <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (opened from a follow-up action row)</div>
-    <p>If the closure diagnoses a defect, the reviewer first sees <strong>G. Follow-up Actions in the Same Episode</strong> inside Segment Review Detail. The reviewer then clicks the relevant follow-up action row. That row-level drilldown opens <strong>Follow-up Action Detail</strong>, where the action owner, status, due date, source defect, affected segment, and supporting evidence can be reviewed.</p>
+    <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (if a defect is diagnosed)</div>
+    <p>If the closure identifies a defect, the reviewer can click through to a recommended action: target, owner, priority, due date, status, source defect, affected segment, and supporting evidence.</p>
     <figure>
       <div class="shot">
         <div class="shot-single">
@@ -597,8 +588,6 @@
       </div>
       <figcaption>After the row click, Follow-up Action Detail shows the operational handoff: who owns the action, what should happen, when it is due, and which defect/evidence record explains why it exists.</figcaption>
     </figure>
-
-    <p>This path protects expert time: the Head Researcher never has to open an episode they don&rsquo;t need to see. They land directly on the case, with full upstream context already attached.</p>
   </div>
 </section>
 
@@ -672,7 +661,7 @@
     <p>EP_018 has 7 total segments and 3 usable segments &mdash; a strong demo case because the episode is not simply &ldquo;good&rdquo; or &ldquo;bad.&rdquo; That partial outcome is the operational reason for drilling further into segment-level review.</p>
 
     <div class="path-section-label">Step 3 &middot; Segment Review Detail (episode path)</div>
-    <p>Clicking <code>SEG_018_04</code> inside the episode opens the same Segment Review Detail surface used in Path 1, but scoped to this episode/segment pair: Selected Segment Summary, Subtask Criteria, Segment Decisions in the Same Episode, Decision Evidence, staged reviewer decisions (read-only), Head Researcher&rsquo;s Final Closure, Follow-up Action, and Dataset Package Readiness.</p>
+    <p>Clicking <code>SEG_018_04</code> inside the episode opens the same Segment Review Detail surface used in Path 1, scoped to this episode/segment pair.</p>
 
     <figure>
       <div class="shot">
@@ -731,7 +720,7 @@
 <section class="closing">
   <div class="wrap">
     <div class="cta-box">
-      If you would like to see the Workshop app directly, please contact me at <a href="mailto:abby.dw.heo@gmail.com">abby.dw.heo@gmail.com</a> and I can provide access.
+      The Workshop app is live on Palantir Foundry. For access, reach out at <a href="mailto:abby.dw.heo@gmail.com">abby.dw.heo@gmail.com</a>.
     </div>
     <div class="meta-line">Seoul, Korea &middot; Updated June 2026</div>
   </div>
