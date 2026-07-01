@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Physical AI Data Review Workflow · Dahm-won (Abby) Heo</title>
-  <meta name="description" content="A case study on turning an undefined Physical AI data review bottleneck into a staged review workflow: QC signals, video-based first review, Data PM escalation, Head Researcher judgment, and training-readiness decisions.">
+  <title>Physical AI Data Pipeline · Dahm-won (Abby) Heo</title>
+  <meta name="description" content="Case study on diagnosing an undefined Physical AI data review bottleneck, defining a Task/Subtask operating structure, and designing a staged review workflow for training-readiness decisions.">
   <style>
 
-    :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#f8fafc; --panel:#ffffff; }
+    :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#f8fafc; --panel:#ffffff; --link-soft:#eff6ff; }
     * { box-sizing:border-box; }
     body { margin:0; background:#fff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:17px; line-height:1.7; }
     main { width:min(880px, calc(100% - 40px)); margin:0 auto; padding:54px 0 64px; }
@@ -22,85 +22,73 @@
     h2 { margin:48px 0 14px; padding-top:28px; border-top:1px solid var(--line); font-size:1.08rem; letter-spacing:.06em; text-transform:uppercase; }
     h3 { margin:30px 0 10px; font-size:1.18rem; line-height:1.35; }
     p { margin:0 0 16px; }
-    figure { margin:28px 0 34px; }
-    figure img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06); }
-    figcaption { margin-top:10px; color:var(--muted); font-size:.94rem; line-height:1.55; }
-    .contact-note { margin-top:34px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:#fff; color:#263244; }
+    .cta-card { margin-top:42px; padding:22px; border:1px solid var(--line); border-radius:18px; background:var(--soft); }
+    .cta-card h2 { margin:0 0 10px; padding:0; border:0; }
+    .button-link { display:inline-flex; align-items:center; justify-content:center; margin-top:8px; padding:11px 16px; border:1px solid #bfdbfe; border-radius:999px; background:var(--link-soft); color:#1e40af; font-weight:700; line-height:1.2; }
+    .button-link:hover { background:#dbeafe; text-decoration:none; }
     footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem; }
     @media (max-width:560px) { main { width:min(100% - 28px, 880px); padding-top:38px; } body { font-size:16px; } }
 
   </style>
-  <link rel="stylesheet" href="../../assets/css/image-lightbox.css">
 </head>
 <body>
   <main>
     <p class="back"><a href="../../">← Back to home</a></p>
     <p class="eyebrow">Portfolio case study · Physical AI data operations</p>
-    <h1>Physical AI Data Review Workflow</h1>
-    <p class="subtitle">Project Manager, Data Programs / Workflow Designer · September 2025 – February 2026</p>
+    <h1>Physical AI Data Pipeline</h1>
+    <p class="subtitle">Project Manager · September 2025 – February 2026 · Abby (Dahm Won) Heo</p>
     <div class="summary-card">
-      <p>A case study on turning an undefined Physical AI data review bottleneck into a staged review workflow: QC signals, video-based first review, Data PM escalation, Head Researcher judgment, and training-readiness decisions.</p>
+      <p>Researchers said review was impossible. I diagnosed the missing review structure, defined the Task/Subtask operating model and staged review workflow, and helped turn Physical AI data collection into training-readiness decisions.</p>
     </div>
+
     <h2 id="situation">Situation</h2>
-    <p>This project was part of a KRW 34B government-funded Physical AI foundation-model initiative. My company was seconded to the lead research company to help define the data pipeline around large-scale Physical AI data collection.</p>
-    <p>When I joined, the team had navigation-data experience but little manipulation-data experience. There was no mature structure for collecting, reviewing, and deciding whether Physical AI episodes were usable for training. Both organizations were entering new territory under a government-proposal deadline.</p>
-    <p>Head Researcher time was the scarcest resource in this pipeline. Every case that did not strictly require their judgment was still consuming it, which meant data collection could not scale without first protecting that time.</p>
+    <p>The Ministry of Science and ICT’s Physical AI Leading Technology Development Program was a KRW 34 billion national program to develop a Physical AI foundation model. A consortium centered on the lead research company was formed to compete for the program against other consortiums. The lead research company led model development, while my company joined because of its experience running large-scale data collection and processing projects. It seconded me and one engineer to the lead research company to support the data-pipeline work from inside the model-development team.</p>
+    <p>That experience mattered, but this was not a routine data-collection project. The lead research company had experience collecting autonomous-driving data, but robot manipulation data for Physical AI had very little domestic precedent. My company also had data-pipeline experience, but no ready-made Physical AI playbook. Both organizations were defining the operating model while the government proposal and the project structure were still being shaped.</p>
+    <p>In that embedded role, I helped define how Physical AI data should be collected, reviewed, and prepared for training. The goal was not simply to increase data volume, but to make sure the researchers’ model-development work could be supported by usable training data.</p>
+
     <h2 id="diagnosis">Diagnosis</h2>
-    <p>The first problem researchers named was simple: “Review is impossible.” Sensor-based auto-QC existed, but it did not close the loop. Flagged anomalies still needed video review, and unflagged episodes still needed a way to confirm training usability.</p>
-    <p>The visible bottleneck looked like data volume: more episodes and more scenarios. The deeper bottleneck was review structure. Scaling collection before defining usable vs. unusable data would only scale ambiguity.</p>
-    <p>The second issue was data grain. If the team could not pinpoint which subtask failed, it could not decide what to discard, what to salvage, or which collector guidance needed to change.</p>
+    <p>In the initial meeting, the lead research company’s researchers described quality review as the immediate blocker. Sensor-based auto-QC was already in place, but it did not solve the training-data decision problem. It could flag potential anomalies, but it could not determine whether a flagged case was a true outlier or whether unflagged Physical AI data was actually usable for model training. Those judgments still required human review of the video, task outcome, and failure context.</p>
+    <p>The visible demand was more data: more episodes, more scenarios, and faster collection. I diagnosed a different bottleneck. The project did not yet have an operational review layer that could turn collected Physical AI data into training-ready data. If collection scaled before that layer existed, the team would accumulate more data without knowing which parts improved the model and which parts degraded it.</p>
+    <p>The underlying issue was data granularity. Robot manipulation tasks needed to be broken into reviewable subtasks, because a failed episode was not always wholly useless and a completed episode was not always training-ready. Without defined review units, decision criteria, and escalation ownership, the team could not consistently decide what to keep, discard, recollect, or escalate.</p>
+
     <h2 id="approach">Approach</h2>
-    <h3 id="designing-the-task-subtask-structure">Designing the Task / Subtask structure</h3>
-    <p>I interviewed the Head of Research and translated the pain points into an operating model. Treating each episode as pass/fail made it impossible to identify repeated failure patterns, improve collector instructions, or track action-level coverage in the database.</p>
-    <p>I proposed a Task / Subtask structure: each episode stayed as a task-level run, but collection, review, and storage were organized by ordered subtasks. That structure let reviewers pinpoint failure-prone subtasks, salvage usable segments, and build an action-level dataset instead of discarding whole episodes.</p>
-    <p>Scenario sat alongside this structure as a separate axis: the conditions a task was performed under, such as object count, object shape, or lighting. Episodes were also grouped into delivery batches, what the team informally called “the project,” each collected, processed, and shipped together.</p>
-    <figure>
-      <img src="../../assets/images/physical-ai/physical-ai-01.png" alt="Platform UI: Task / Scenario / Subtask / Action Segment structure reflected in the company’s platform demo">
-      <figcaption>Platform UI: Task / Scenario / Subtask / Action Segment structure reflected in the company’s platform demo</figcaption>
-    </figure>
-    <h3 id="china-field-visit-validating-the-review-assumption">China field visit: validating the review assumption</h3>
-    <p>Engineers initially assumed that general reviewers would need sensor-graph training. I challenged that assumption because sensor meaning changes by task and project context. General reviewers should not be expected to visually interpret sensor graphs; that was exactly why auto-QC existed.</p>
-    <p>To validate the assumption, I looked for teams with real Physical AI data-collection operations at scale. Domestic robotics companies were reluctant to disclose operational details, so I researched China-based humanoid robotics companies and helped arrange meetings with two of the leading ones, including a visit to one company’s Shanghai office with our CTO.</p>
-    <p>The field visit changed the discussion. In the observed four-person workflow, one person demonstrated the task, one reviewed mainly by video, and two prepared the next environment. Sensor graphs were handled by auto-QC. After I shared the notes and sketches, video-based reviewer judgment became the practical design direction.</p>
-    <p>I also identified an internal simulation capability gap. Through an introduction from one of these meetings, I contacted a physics-based simulation vendor and gathered timing/cost inputs so the team could make a buy-vs-build decision on physics-based simulation support.</p>
-    <h3 id="redesigning-the-review-workflow">Redesigning the review workflow</h3>
-    <p>After the field visit, I redesigned the review flow into three stages.</p>
-    <p>Initial Reviewers use video and guidelines to decide whether the demonstration followed the task requirements. They do not inspect sensor graphs.</p>
-    <p>Data PMs review ambiguous cases using video and the sensor flags auto-QC had already identified, not raw sensor graphs. They draw on broader project context and closer communication with researchers than Initial Reviewers do.</p>
-    <p>Head Researchers review only the hardest unresolved cases with the full evidence record and make the final training-usability judgment.</p>
-    <p>Each prior decision remains visible as read-only context in the next stage, so escalated cases carry an evidence trail instead of forcing senior reviewers to restart from zero.</p>
-    <p>I briefed the lead research company’s business executive on this workflow and on the company platform mock-up I designed with engineers.</p>
+    <h3 id="task-subtask-structure">Task/Subtask structure</h3>
+    <p>To turn the diagnosis into an operating structure, I first researched how other companies structured similar robot data-collection workflows. The academic and industry terminology was not yet standardized; different companies used different labels, but the underlying intent was similar: break a full robot run into smaller units that could be collected, reviewed, stored, and analyzed more consistently.</p>
+    <p>I summarized that research internally and proposed Task/Subtask as our working vocabulary. I then used the same framing in interviews with the lead research company’s Head of Research to map the review problem at the task and subtask level. Treating an entire episode as pass or fail made it hard to identify which part of the robot task failed, which failure patterns were repeating, or how much action data of each type existed in the database.</p>
+    <p>Under this structure, each episode remained the task-level collection unit, but it could be broken into subtasks for collection, review, and storage. That changed three things: workers could receive subtask-level demonstration guides; reviewers could pinpoint failed subtasks and separate usable spans from unusable ones; and the data layer could track action-level coverage instead of treating each episode as one undifferentiated record.</p>
+
+    <h3 id="field-benchmarking-in-china">Field benchmarking in China</h3>
+    <p>A second question was whether non-specialist Initial Reviewers should be trained to read sensor graphs. I wanted to validate that assumption before designing the review process around it. The sensor values that matter differ by task, and their meaning depends on the collection objective. Asking general reviewers to judge graph movements by eye would not scale. Sensor-based auto-QC was the right layer for identifying candidate anomalies; human review needed to focus on video evidence, task outcome, and escalation.</p>
+    <p>To benchmark a more mature operating model, I researched Chinese humanoid robotics companies and helped arrange meetings without relying on domestic competitors that were unlikely to share internal practices. During the trip, we visited a robotics operator’s data-collection floor in China and observed how review work was divided in practice.</p>
+    <p>The pattern was clear. Reviewers primarily watched video. Sensor graphs were handled by auto-QC rather than by frontline reviewers. Back home, I shared meeting notes and floor sketches, giving the team concrete evidence for a video-centered first-pass review model.</p>
+
+    <h3 id="workflow-redesign">Workflow redesign</h3>
+    <p>Based on the research and field benchmarking, I redesigned the review process as a staged workflow instead of a single pass/fail review. The workflow separated first-pass video review, PM-level review for ambiguous cases, and expert review for the hardest training-usability decisions.</p>
+    <p>The key was to keep sensor-based auto-QC and human review in different roles. Auto-QC identified candidate anomaly windows; human reviewers checked those signals against video evidence, task outcome, and escalation context before a training-readiness decision was made. Each stage preserved the prior decision and evidence trail, so later reviewers did not start from zero.</p>
+    <p>I reviewed and refined the platform mock-up with the engineer seconded from my company and used it to brief the workflow to the lead research company’s business lead.</p>
+
     <h2 id="what-changed">What Changed</h2>
-    <p>By the time I left, I could confirm two concrete changes.</p>
-    <p>First, the Task / Scenario / Subtask / Action Segment structure was reflected in the company’s platform demo. The KRW 34B government project was also approved, and our company was the only data-pipeline partner seconded directly to the lead research company.</p>
-    <p>Second, the review workflow changed. General reviewer work was defined around video evidence, while Data PM and Head Researcher review handled ambiguity and final training-usability judgment.</p>
-    <p>This also changed what reached the Head Researcher: only cases that Initial Reviewers and Data PMs could not resolve with video, guidelines, and sensor flags were escalated, instead of every case competing for the same scarce judgment.</p>
-    <p>After my secondment ended, the lead research company’s research division offered me a data pipeline manager position.</p>
-    <p>I could not measure later yield impact because I left before the government project formally began. The supported outcome is the operating-model shift: a previously undefined review problem became a staged workflow for Physical AI data review, escalation, and training-readiness judgment.</p>
+    <p>By the end of my secondment, I could confirm two concrete operating changes.</p>
+    <p>First, the Task/Subtask structure moved beyond a planning document. It was reflected in the demo version I worked on with the engineer seconded from my company, and I later confirmed that the same structure appeared in the launched platform shown on my company’s homepage. The Task / Scenario / Sub-Task / Action Segment structure gave the team a shared way to break robot runs into reviewable units and track action-level coverage, instead of treating each episode as a single pass/fail record.</p>
+    <p>Second, the review workflow changed. The platform design moved away from asking non-specialist reviewers to interpret sensor graphs and toward video-centered first-pass review with escalation. Sensor-based auto-QC remained the layer for identifying candidate anomaly windows; human review focused on task outcome, video evidence, and training-readiness judgment. Ambiguous cases could move to PM-level review or expert review.</p>
+    <p>At the program level, the consortium proposal was approved for the KRW 34 billion national program. Of the two companies responsible for the data pipeline, my company was the only one embedded directly with the lead research company’s model-development team.</p>
+
     <h2 id="framing">Framing</h2>
-    <p>For me, this is the core Deployment Strategist pattern: the work is not only solving the problem a customer has already named. It is finding the real operating constraint, building a decision structure around it, and moving people so the structure works.</p>
-    <p>This project began with one sentence: “Review is impossible.” No one had defined what the actual problem was, what should come first, or what operating structure was needed.</p>
-    <p>My role was to interview researchers, structure the pain points, propose the Subtask concept, validate a critical assumption in China with the CTO, and translate those findings into platform design and workflow redesign.</p>
-    <p>I was not the engineer building the platform, but I designed with engineers, briefed the lead research company’s business executive, and saw the structure reflected in the company’s platform demo.</p>
-    <p>After the project, I rebuilt this workflow as a Palantir Foundry Workshop portfolio app. The screenshots below show that portfolio implementation, and a more detailed walkthrough is available here: <a href="workshop-app/">Physical AI Data Review Console</a>.</p>
-    <p>To make the source material checkable, I also published the two directly collected episodes used in the reconstruction as a small LeRobot-format sample: <a href="collected-data/">view EP_017 and EP_018</a>.</p>
-    <figure>
-      <img src="../../assets/images/physical-ai/physical-ai-02.png" alt="Workshop App Dashboard (portfolio reconstruction): batch operating view, Head Researcher escalation cases, episode review, and a sample escalation analytics view. All figures shown are illustrative sample data, not measured outcomes from the original project. Of the 18 episodes shown, 2 (episodes 17–18) include video I collected and annotated myself; the rest are placeholder entries.">
-      <figcaption>Workshop App Dashboard (portfolio reconstruction): batch operating view, Head Researcher escalation cases, episode review, and a sample escalation analytics view. All figures shown are illustrative sample data, not measured outcomes from the original project. Of the 18 episodes shown, 2 (episodes 17–18) include video I collected and annotated myself; the rest are placeholder entries.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../assets/images/physical-ai/physical-ai-03.png" alt="Initial Reviewer Decision → Data PM Decision (read-only): prior-stage decisions appear as read-only context for the next reviewer, and the Head Researcher makes the final training-usability call.">
-      <figcaption>Initial Reviewer Decision → Data PM Decision (read-only): prior-stage decisions appear as read-only context for the next reviewer, and the Head Researcher makes the final training-usability call.</figcaption>
-    </figure>
-    <figure>
-      <img src="../../assets/images/physical-ai/physical-ai-04.png" alt="Head Researcher Review Closure: reviews escalated evidence, confirms the final training decision, and closes the segment review.">
-      <figcaption>Head Researcher Review Closure: reviews escalated evidence, confirms the final training decision, and closes the segment review.</figcaption>
-    </figure>
-    <p class="contact-note">If you would like to see the Workshop app directly, please contact me at ‘abby.dw.heo@gmail.com’ and I can provide access.</p>
+    <p>For me, the Deployment Strategist signal in this project is the ability to enter an ambiguous operating environment, separate the visible symptom from the real bottleneck, and build the decision structure needed for people to act.</p>
+    <p>The starting point was a simple but difficult sentence: “Review is impossible.” The deeper issue was not only review capacity. The team did not yet have a shared operating model for how Physical AI data should be broken down, reviewed, escalated, and prepared for training.</p>
+    <p>My work was to help define that structure. I researched comparable robot data-collection practices, summarized the shared operating logic behind different industry terms, and proposed Task/Subtask as our working vocabulary. I used that structure in interviews with the lead research company, validated the video-centered review model through field benchmarking in China, and defined the review structure: the data units, reviewer roles, escalation path, and evidence flow. I then worked with the engineer seconded from my company to reflect those requirements in the demo before briefing the workflow to the lead research company’s business lead.</p>
+    <p>What matters to me is that the structure did not stay abstract. It shaped the demo version I worked on, and I later confirmed that the same Task / Scenario / Sub-Task / Action Segment structure appeared in the launched platform shown on my company’s public website.</p>
+    <p>This is the kind of work I want to do as a Deployment Strategist: find the real operating bottleneck, define the data and decision structure, and help teams move from unclear data volume to usable workflows.</p>
+
+    <section class="cta-card" aria-labelledby="workshop-app-link">
+      <h2 id="workshop-app-link">Related Workshop portfolio app</h2>
+      <p>The original project did not use Palantir Foundry. To make this workflow easier to see, I later recreated a sanitized version as a Palantir Workshop portfolio app using demo data.</p>
+      <a class="button-link" href="workshop-app/">View the Workshop walkthrough</a>
+    </section>
+
     <footer>
-      Seoul, Korea · Updated June 2026
+      Seoul, Korea · Updated July 2026
     </footer>
   </main>
-  <script src="../../assets/js/image-lightbox.js"></script>
 </body>
 </html>
