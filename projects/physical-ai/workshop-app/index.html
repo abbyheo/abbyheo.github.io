@@ -456,7 +456,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/dashboard-overview.png" alt="Full Dashboard view: Collection Ops Summary and Sections A, B, and C" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Dashboard view: batch operating state, Head Researcher escalation cases, all-episodes review entry point, and yield-loss signal.</figcaption>
+      <figcaption>The dashboard sets up the review: which cases need judgment, where usable data is being lost, and whether the batch is ready to export.</figcaption>
     </figure>
 
     <h3>A. Head Researcher escalation cases</h3>
@@ -472,7 +472,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-escalation-table.png" alt="Head Researcher Escalation Cases table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Each escalated segment carries the Data PM&rsquo;s routing reason and the final training decision in one row.</figcaption>
+      <figcaption>This table matters because Head Researcher review starts from cases already routed for judgment, not a blind scan of every segment.</figcaption>
     </figure>
 
     <h3>B. All-episodes review table</h3>
@@ -488,7 +488,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review — All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>EP_018 is the demo focus: a partial-salvage real episode where only part of the run remains usable &mdash; the reason episode pass/fail cannot be the final answer.</figcaption>
+      <figcaption>EP_018 is included because it proves the central point of the app: one failed segment should not erase every usable span in the episode.</figcaption>
     </figure>
 
     <h3>C. Yield-loss drivers</h3>
@@ -504,7 +504,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/yield-loss-drivers-table.png" alt="Data Collection Yield Loss Drivers table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Defect Attribution count by Defect Category &mdash; an operating signal for follow-up action, not a severity-weighted loss metric.</figcaption>
+      <figcaption>This view matters because closed defect decisions become a signal for where the team should fix collection, sensor, or workflow problems next.</figcaption>
     </figure>
   </div>
 </section>
@@ -555,7 +555,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-escalation-table.png" alt="Head Researcher Escalation Cases table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Each escalated segment carries the Data PM&rsquo;s routing reason and the final training decision in one row.</figcaption>
+      <figcaption>This entry point matters because the Data PM’s escalation reason follows SEG_018_04 into Head Researcher review.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 2 &middot; Segment Review Detail (HR Escalation Lane)</div>
@@ -581,6 +581,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/segment-review-decision-evidence.png" alt="Decision Evidence" loading="lazy" decoding="async">
         </div>
       </div>
+      <figcaption>Segment Review Detail exists because training usability is decided at the segment level, using criteria and evidence rather than episode status alone.</figcaption>
     </figure>
 
     <figure>
@@ -591,7 +592,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-review-closure-f.png" alt="Head Researcher final review closure" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Staged review flow:<br>- Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher&rsquo;s closure records the final training-use decision.<br>- The Head Researcher reviews escalated cases and evidence, confirms the final training decision, and closes the segment review.</figcaption>
+      <figcaption>Staged review flow: Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher’s closure records the final training-use decision.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (if a defect is diagnosed)</div>
@@ -602,7 +603,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/segment-review-follow-up-actions-table.png" alt="Follow-up Actions in the Same Episode table with selected action row" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>The entry point is the selected row in G. Follow-up Actions in the Same Episode; clicking that action row opens Follow-up Action Detail.</figcaption>
+      <figcaption>This row matters because review should lead to a concrete action when a defect is diagnosed, not stop at a training-use label.</figcaption>
     </figure>
     <figure>
       <div class="shot">
@@ -611,7 +612,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/follow-up-source-defect.png" alt="Follow-up Action Detail source defect summary" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>After the row click, Follow-up Action Detail shows the operational handoff: who owns the action, what should happen, when it is due, and which defect/evidence record explains why it exists.</figcaption>
+      <figcaption>Follow-up Action Detail shows whether that action is specific enough to execute: owner, due date, source defect, affected segment, and evidence are tied together.</figcaption>
     </figure>
   </div>
 </section>
@@ -647,7 +648,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review — All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>EP_018 is the demo focus: a partial-salvage real episode where only part of the run remains usable &mdash; the reason episode pass/fail cannot be the final answer.</figcaption>
+      <figcaption>This entry point matters because the reviewer starts from the whole collection run before deciding which segments deserve closer review.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 2 &middot; Episode Review Detail</div>
@@ -700,7 +701,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/episode-review-dataset-readiness.png" alt="Dataset Package Readiness" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Episode Review Detail for EP_018: full collection context before any segment-level training decision is made.</figcaption>
+      <figcaption>Episode Review Detail keeps lineage, QC, segment outcomes, and export readiness together so the later segment decision can be audited.</figcaption>
     </figure>
 
     <p>EP_018 has 7 total segments and 3 usable segments &mdash; a strong demo case because the episode is not simply &ldquo;good&rdquo; or &ldquo;bad.&rdquo; That partial outcome is the operational reason for drilling further into segment-level review.</p>
@@ -716,7 +717,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-review-closure-f.png" alt="Segment Review Detail final closure" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Same Segment Review Detail surface as Path 1, now reached through the episode rather than the escalation lane &mdash; the top context bar reflects EP_018 / SEG_018_04.</figcaption>
+      <figcaption>The repeated Segment Review Detail screen matters because both paths close with the same decision logic, not separate rules for escalation and episode drilldown.</figcaption>
     </figure>
 
   </div>
