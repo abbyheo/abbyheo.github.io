@@ -23,7 +23,7 @@
     h3 { margin:30px 0 10px; font-size:1.18rem; line-height:1.35; }
     p { margin:0 0 16px; }
     figure { margin:28px 0 34px; }
-    figure img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06); }
+    figure img, figure video { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:14px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06); }
     figcaption { margin-top:10px; color:var(--muted); font-size:.94rem; line-height:1.55; }
     .contact-note { margin-top:34px; padding:18px 20px; border:1px solid var(--line); border-radius:16px; background:#fff; color:#263244; }
     footer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.92rem; }
@@ -55,8 +55,11 @@
     <p>The downloaded CSV of workers’ tagged output did not preserve the original printed question numbers. What it did contain was position-based data for the questions that were actually processed: each item’s processed order across the full PDF and its processed order within the page. Because duplicates, out-of-scope items, and incomplete questions were excluded, those processed-order indices did not always match the workbook’s printed numbering. I used that structure, together with workbook-level total counts and processed-item counts, to trace a mismatch from an entire delivery down to a specific workbook, page, and question position.</p>
     <p>Once that matching structure existed, the next question became possible: did the output actually render correctly for the client? I asked the platform team to build a QC viewer, but they declined, citing limited resources. Since QC could not wait, I built one myself using Cursor AI. There was no company GitHub account, so I hosted it on my personal account, and designed it to be browser-only so data never left the local environment. This let us catch rendering defects before delivery instead of after.</p>
     <figure>
-      <img src="../../assets/images/english-exam-dx/english-exam-dx-01.png" alt="QC Web Viewer: Question View / Raw JSON / HTML Rendering comparison">
-      <figcaption>QC Web Viewer: Question View / Raw JSON / HTML Rendering comparison</figcaption>
+      <video controls playsinline preload="metadata" poster="../../assets/images/english-exam-dx/qc-viewer-walkthrough-poster.jpg" aria-label="QC Web Viewer walkthrough showing structured question view, raw JSON, and HTML rendering comparison">
+        <source src="../../assets/videos/english-exam-dx/qc-viewer-walkthrough.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <figcaption>QC Web Viewer walkthrough: structured question view, raw JSON, and HTML rendering comparison</figcaption>
     </figure>
     <h3 id="capacity-chain">Capacity chain</h3>
     <p>Answer-sheet layouts varied by publisher: single-column and two-column layouts, boxed numbers, and mixed answer/explanation formats. The task was not just OCR. Each answer-sheet entry had to be converted into structured CSV fields: its visual layout column, the answer value itself, such as a multiple-choice option number or a short-answer word or sentence, and the corresponding explanation. Basic OCR with Tesseract, an open-source text-recognition engine, could extract text, but it could not reliably separate those fields or preserve the layout relationships. I used Gemini Vision Pro, grouped similar layouts into batches, had reviewers check first-pass extraction, and fed that feedback into the next prompt/schema iteration. Manual PM copying became a repeatable pipeline.</p>
