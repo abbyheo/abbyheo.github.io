@@ -397,19 +397,19 @@
     <div class="kpi-grid">
       <div class="kpi-card">
         <div class="val">18</div>
-        <div class="label">Total Collected Episodes &mdash; collection volume, not training-ready volume</div>
+        <div class="label">Total Collected Episodes: collection volume, not training-ready volume</div>
       </div>
       <div class="kpi-card">
         <div class="val">0</div>
-        <div class="label">Open Review Segments &mdash; review closure state, not data quality</div>
+        <div class="label">Open Review Segments: review closure state, not data quality</div>
       </div>
       <div class="kpi-card">
         <div class="val">76%</div>
-        <div class="label">Usable Segment Yield &mdash; segment-level training usability</div>
+        <div class="label">Usable Segment Yield: segment-level training usability</div>
       </div>
       <div class="kpi-card">
         <div class="val">1.58h</div>
-        <div class="label">Batch Readiness Lead Time &mdash; first collection start &rarr; latest export-ready item</div>
+        <div class="label">Batch Readiness Lead Time: first collection start &rarr; latest export-ready item</div>
       </div>
     </div>
 
@@ -454,7 +454,7 @@
     <figure>
       <div class="shot">
         <div class="shot-single">
-          <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review — All Episodes table" loading="lazy" decoding="async">
+          <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review: All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
       <figcaption>EP_018 is included because it proves the central point of the app: one failed segment should not erase every usable span in the episode.</figcaption>
@@ -465,7 +465,7 @@
       <div class="panel-label">Dashboard section</div>
       <h4>Recurring issue types reducing usable training data</h4>
       <div class="grain">grain: one counted row = one Defect Attribution record, grouped by Defect Category</div>
-      <p style="margin-bottom:0;">This chart turns reviewed Physical AI data into an operating signal. Instead of showing failed episodes as isolated cases, it groups defect attribution records by defect category, so the team can see whether usable training data is being lost to network issues, collector errors, platform/sensor issues, collection-method context, or sim-to-real gaps &mdash; giving Data PMs and Head Researchers a concrete starting point for follow-up action after segment review is closed.</p>
+      <p style="margin-bottom:0;">This chart turns reviewed Physical AI data into an operating signal. Instead of showing failed episodes as isolated cases, it groups defect attribution records by defect category, so the team can see whether usable training data is being lost to network issues, collector errors, platform/sensor issues, collection-method context, or sim-to-real gaps, giving Data PMs and Head Researchers a concrete starting point for follow-up action after segment review is closed.</p>
     </div>
     <figure>
       <div class="shot">
@@ -500,7 +500,7 @@
 <section class="block">
   <div class="wrap">
     <h2>Path 1 &middot; Head Researcher escalation lane</h2>
-    <p class="lead-p">This is the expert-judgment shortcut. From the Dashboard, the Head Researcher opens <strong>A. Head Researcher Escalation Cases</strong> and clicks directly into the segment that needs their judgment &mdash; skipping the full episode context, because the case has already been routed to them with a reason attached.</p>
+    <p class="lead-p">This is the expert-judgment shortcut. From the Dashboard, the Head Researcher opens <strong>A. Head Researcher Escalation Cases</strong> and clicks directly into the segment that needs their judgment, skipping the full episode context, because the case has already been routed to them with a reason attached.</p>
 
     <div class="path-trail">
       <span class="step">Dashboard</span>
@@ -509,14 +509,14 @@
       <span class="arrow">&rarr;</span>
       <span class="step current">click selected segment (e.g. SEG_018_04)</span>
       <span class="arrow">&rarr;</span>
-      <span class="step current">Segment Review Detail &mdash; HR Escalation Lane</span>
+      <span class="step current">Segment Review Detail: HR Escalation Lane</span>
     </div>
 
     <div class="path-section-label">Step 1 &middot; A. Head Researcher Escalation Cases</div>
     <div class="panel-card">
       <h4>Review Data PM escalations that require Head Researcher judgment</h4>
       <div class="grain">grain: one row = one Subtask Segment escalated from Data PM to Head Researcher</div>
-      <p style="margin-bottom:0;">This is not a generic error list. It isolates segment-level cases that the Data PM could not safely close alone. Each row preserves the episode, selected segment, subtask goal, Data PM decision, escalation reason, escalation timestamp, final training decision, and review decision state &mdash; so the Head Researcher does not need to restart from zero or inspect every episode. They receive the cases where judgment is ambiguous or policy-sensitive, with the prior routing reason still attached.</p>
+      <p style="margin-bottom:0;">This is not a generic error list. It isolates segment-level cases that the Data PM could not safely close alone. Each row preserves the episode, selected segment, subtask goal, Data PM decision, escalation reason, escalation timestamp, final training decision, and review decision state, so the Head Researcher does not need to restart from zero or inspect every episode. They receive the cases where judgment is ambiguous or policy-sensitive, with the prior routing reason still attached.</p>
     </div>
     <figure>
       <div class="shot">
@@ -533,8 +533,8 @@
       <li>Selected Segment Summary &amp; Subtask Criteria</li>
       <li>Segment Decisions in the Same Episode</li>
       <li>Decision Evidence (video, sensor, raw, metadata)</li>
-      <li>Initial Reviewer Decision &mdash; read-only</li>
-      <li>Data PM Decision &mdash; read-only</li>
+      <li>Initial Reviewer Decision (read-only)</li>
+      <li>Data PM Decision (read-only)</li>
       <li>Head Researcher&rsquo;s Final Closure</li>
       <li>Follow-up Action (links to Follow-up Action Detail)</li>
       <li>Dataset Package Readiness</li>
@@ -589,7 +589,7 @@
 <section class="block">
   <div class="wrap">
     <h2>Path 2 &middot; Episode review &amp; drilldown</h2>
-    <p class="lead-p">This is the full-context path. From the Dashboard, a reviewer opens <strong>B. Physical AI Data Collection Review &mdash; All Episodes</strong>, selects one episode (especially a failed or partially salvaged run), and drills from full run context down into a specific segment.</p>
+    <p class="lead-p">This is the full-context path. From the Dashboard, a reviewer opens <strong>B. Physical AI Data Collection Review: All Episodes</strong>, selects one episode (especially a failed or partially salvaged run), and drills from full run context down into a specific segment.</p>
 
     <div class="path-trail">
       <span class="step">Dashboard</span>
@@ -607,21 +607,21 @@
 
     <div class="path-section-label">Step 1 &middot; B. All-episodes review table</div>
     <div class="panel-card">
-      <h4>Open any episode &mdash; especially failed or partially salvaged runs</h4>
+      <h4>Open any episode, especially failed or partially salvaged runs</h4>
       <div class="grain">grain: one row = one Collection Episode</div>
-      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection run. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability &mdash; a <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
+      <p style="margin-bottom:0;">The all-episodes table keeps decisions grounded in the original collection run. A reviewer can start from episode status, primary issue, source type, task, scenario, duration, and collection time before drilling into segment-level decisions. This prevents episode-level status from being confused with final segment-level training usability. A <code>partial_salvage</code> episode can still contain segments that are usable for training.</p>
     </div>
     <figure>
       <div class="shot">
         <div class="shot-single">
-          <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review — All Episodes table" loading="lazy" decoding="async">
+          <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review: All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
       <figcaption>This entry point matters because the reviewer starts from the whole collection run before deciding which segments deserve closer review.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 2 &middot; Episode Review Detail</div>
-    <p>Opening EP_018 shows full-run context before any segment-level decision is made &mdash; a fixed top context bar with an <code>Open Episode Video</code> button, followed by:</p>
+    <p>Opening EP_018 shows full-run context before any segment-level decision is made: a fixed top context bar with an <code>Open Episode Video</code> button, followed by:</p>
     <div class="tbl-wrap">
       <table>
         <thead>
@@ -639,7 +639,7 @@
     </div>
 
     <div class="lineage-explainer">
-      <p>The Episode Lineage Graph is not a reviewer-facing primary screen. It is a traceability template that shows every ontology object connected to the selected Collection Episode: which session it came from, what export-readiness items exist, which QC signals fired, how those signals routed to segment review, and whether a defect attribution led to a follow-up action. The graph is small in the screenshot, so here is the structure it shows:</p>
+      <p>The Episode Lineage Graph helps the user trace the selected Collection Episode back to its session, its export-readiness items, and every QC signal that fired. It also shows how each signal routed into segment review and whether a defect attribution led to a follow-up action. The graph is small in the screenshot, so here is the structure it shows:</p>
       <pre class="lineage-tree"><code>Collection Episode (EP_018)
 ├─ Collection Session (SESS_013)
 │  └─ session / collector / method / platform collection context
@@ -673,7 +673,7 @@
       <figcaption>Episode Review Detail keeps lineage, QC, segment outcomes, and export readiness together so the later segment decision can be audited.</figcaption>
     </figure>
 
-    <p>EP_018 has 7 total segments and 3 usable segments &mdash; a strong demo case because the episode is not simply &ldquo;good&rdquo; or &ldquo;bad.&rdquo; That partial outcome is the operational reason for drilling further into segment-level review.</p>
+    <p>EP_018 has 7 total segments and 3 usable segments, a strong demo case because the episode is not simply &ldquo;good&rdquo; or &ldquo;bad.&rdquo; That partial outcome is the operational reason for drilling further into segment-level review.</p>
 
     <div class="path-section-label">Step 3 &middot; Segment Review Detail (episode path)</div>
     <p>Clicking <code>SEG_018_04</code> inside the episode opens the same Segment Review Detail surface used in Path 1, scoped to this episode/segment pair.</p>
@@ -695,8 +695,8 @@
 <section class="block">
   <div class="wrap">
     <h2>What both paths share</h2>
-    <p>Segment Review Detail, Follow-up Action Detail, and the video/media drawer are <strong>common reusable surfaces</strong>, not separate fixed pages. Whether a Head Researcher arrives through the escalation lane or through an episode drilldown, they land on the same kind of decision surface &mdash; the displayed evidence, staged decisions, and follow-up rows simply scope to whichever segment was selected.</p>
-    <p>That reuse is a deliberate design choice: it keeps the decision logic in one place instead of duplicating it per entry path, while still letting each path optimize for its own situation &mdash; speed for the escalation lane, full context for the episode drilldown.</p>
+    <p>Segment Review Detail, Follow-up Action Detail, and the video/media drawer are <strong>common reusable surfaces</strong>, not separate fixed pages. Whether a Head Researcher arrives through the escalation lane or through an episode drilldown, they land on the same kind of decision surface. The displayed evidence, staged decisions, and follow-up rows simply scope to whichever segment was selected.</p>
+    <p>Reusing the same surface across both paths is deliberate. It keeps the decision logic in one place instead of duplicating it per entry path. Each path still optimizes for its own situation. The escalation lane is built for speed, and the episode drilldown is built for full context.</p>
   </div>
 </section>
 
