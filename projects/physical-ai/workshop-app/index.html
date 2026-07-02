@@ -384,7 +384,7 @@
   <div class="wrap">
     <div class="eyebrow">Foundry Workshop app walkthrough &middot; Physical AI data operations</div>
     <h1>Physical AI Data Review Console</h1>
-    <p class="sub">This is a walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app models how a team moves from collected robot episodes to staged review decisions, expert escalation, and training handoff. It uses representative demo data.</p>
+    <p class="sub">This is a walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app models how a team moves from collected robot episodes to staged review decisions, expert escalation, and preparation for model training. It uses representative demo data.</p>
     <p class="sub">The premise is that collected episodes are not automatically training-ready data. The app&rsquo;s job is to show where each episode breaks down, who should judge it, and what happens after the decision.</p>
   </div>
 </header>
@@ -392,7 +392,7 @@
 <section class="block">
   <div class="wrap">
     <h2>Dashboard: operating state before drilldown</h2>
-    <p>The dashboard starts with operating state rather than raw tables. It tells the reviewer whether the current batch is moving toward training handoff, which segment cases required expert judgment, which episodes should be opened for deeper review, and which defect categories are reducing usable Physical AI data.</p>
+    <p>The dashboard starts with operating state rather than raw tables. It tells the reviewer whether the current batch is moving toward a training-ready dataset, which segment cases required expert judgment, which episodes should be opened for deeper review, and which defect categories are reducing usable Physical AI data.</p>
 
     <div class="kpi-grid">
       <div class="kpi-card">
@@ -633,7 +633,7 @@
           <tr><td class="strong">Inherited Session Context</td><td>What collection conditions produced this episode?</td><td>Distinguishes isolated segment issues from repeated session or infrastructure problems.</td></tr>
           <tr><td class="strong">QC Results</td><td>Which episode-level signals passed, warned, or routed a segment to review?</td><td>Uses QC as structured evidence and routing context, not as the final human decision.</td></tr>
           <tr><td class="strong">Segment Decisions in the Same Episode</td><td>Which subtask segments are usable, excluded, or escalated?</td><td>Prevents the whole episode from being treated as a single pass/fail object.</td></tr>
-          <tr><td class="strong">Dataset Package Readiness</td><td>Are video, sensor, raw, and metadata export items ready?</td><td>Connects review closure to training handoff.</td></tr>
+          <tr><td class="strong">Dataset Package Readiness</td><td>Are video, sensor, raw, and metadata export items ready?</td><td>Connects review closure to dataset package readiness.</td></tr>
         </tbody>
       </table>
     </div>
