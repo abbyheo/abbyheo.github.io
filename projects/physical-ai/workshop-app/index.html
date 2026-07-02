@@ -8,15 +8,15 @@
 <style>
   :root {
     --bg: #0a0d12;
-    --bg-panel: #10141c;
-    --bg-card: #121722;
+    --bg-panel: #101a2b;
+    --bg-card: #121d31;
     --border: #2a3140;
     --border-soft: #1c2230;
     --text: #eceff4;
     --text-dim: #a9b1c0;
     --text-faint: #747f92;
     --accent: #8bb4ff;
-    --accent-soft: rgba(139, 180, 255, 0.10);
+    --accent-soft: rgba(139, 180, 255, 0.16);
     --good: #5fd3a0;
     --warn: #f0b35a;
     --serif: "Source Serif 4", Georgia, "Noto Serif KR", serif;
@@ -25,7 +25,7 @@
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 24px; }
   body {
     margin: 0;
     background: var(--bg);
@@ -52,6 +52,56 @@
     color: var(--text-dim);
   }
   .topnav .wrap { display: flex; gap: 18px; flex-wrap: wrap; }
+
+  .toc-nav {
+    margin: 24px 0 0;
+    padding: 14px 18px;
+    border: 0;
+    border-left: 3px solid var(--accent);
+    border-radius: 0;
+    background: var(--bg-panel);
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .toc-nav .toc-label {
+    margin: 0 0 8px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+  }
+  .toc-nav a {
+    display: inline-block;
+    margin: 0 14px 6px 0;
+    color: var(--text-dim);
+    font-weight: 550;
+  }
+  .toc-nav a:hover { color: var(--accent); }
+  @media (min-width: 1280px) {
+    .toc-nav {
+      position: fixed;
+      top: 88px;
+      left: max(12px, calc((100vw - 900px)/2 - 182px));
+      width: 170px;
+      margin: 0;
+      padding: 0 0 0 14px;
+      border-left: 1px solid var(--border);
+      background: transparent;
+    }
+    .toc-nav a {
+      display: block;
+      margin: 0;
+      padding: 5px 0;
+      color: var(--text-faint);
+      font-weight: 500;
+    }
+    .toc-nav .toc-label { color: var(--text-faint); }
+  }
+  @media (max-width: 700px) {
+    .toc-nav a { display: block; margin: 0; padding: 3px 0; }
+  }
 
   .hero {
     padding: 58px 0 38px;
@@ -386,12 +436,20 @@
     <h1>Physical AI Data Review Console</h1>
     <p class="sub">This is a walkthrough of the Workshop app I rebuilt for my Physical AI portfolio case. The app models how a team moves from collected robot episodes to staged review decisions, expert escalation, and preparation for model training. It uses representative demo data.</p>
     <p class="sub">The premise is that collected episodes are not automatically training-ready data. The app&rsquo;s job is to show where each episode breaks down, who should judge it, and what happens after the decision.</p>
+    <nav class="toc-nav" aria-label="On this page">
+      <div class="toc-label">On this page</div>
+      <a href="#dashboard-operating-state">Dashboard: operating state before drilldown</a>
+      <a href="#head-researcher-escalation-lane">Path 1 &middot; Head Researcher escalation lane</a>
+      <a href="#episode-review-drilldown">Path 2 &middot; Episode review &amp; drilldown</a>
+      <a href="#what-both-paths-share">What both paths share</a>
+      <a href="#what-this-demonstrates">What this demonstrates</a>
+    </nav>
   </div>
 </header>
 
 <section class="block">
   <div class="wrap">
-    <h2>Dashboard: operating state before drilldown</h2>
+    <h2 id="dashboard-operating-state">Dashboard: operating state before drilldown</h2>
     <p>The dashboard starts with operating state rather than raw tables. It tells the reviewer whether the current batch is moving toward a training-ready dataset, which segment cases required expert judgment, which episodes should be opened for deeper review, and which defect categories are reducing usable Physical AI data.</p>
 
     <div class="kpi-grid">
@@ -499,7 +557,7 @@
 
 <section class="block">
   <div class="wrap">
-    <h2>Path 1 &middot; Head Researcher escalation lane</h2>
+    <h2 id="head-researcher-escalation-lane">Path 1 &middot; Head Researcher escalation lane</h2>
     <p class="lead-p">This is the expert-judgment shortcut. From the Dashboard, the Head Researcher opens <strong>A. Head Researcher Escalation Cases</strong> and clicks directly into the segment that needs their judgment, skipping the full episode context, because the case has already been routed to them with a reason attached.</p>
 
     <div class="path-trail">
@@ -588,7 +646,7 @@
 
 <section class="block">
   <div class="wrap">
-    <h2>Path 2 &middot; Episode review &amp; drilldown</h2>
+    <h2 id="episode-review-drilldown">Path 2 &middot; Episode review &amp; drilldown</h2>
     <p class="lead-p">This is the full-context path. From the Dashboard, a reviewer opens <strong>B. Physical AI Data Collection Review: All Episodes</strong>, selects one episode (especially a failed or partially salvaged run), and drills from full run context down into a specific segment.</p>
 
     <div class="path-trail">
@@ -694,7 +752,7 @@
 
 <section class="block">
   <div class="wrap">
-    <h2>What both paths share</h2>
+    <h2 id="what-both-paths-share">What both paths share</h2>
     <p>Segment Review Detail, Follow-up Action Detail, and the video/media drawer are <strong>common reusable surfaces</strong>, not separate fixed pages. Whether a Head Researcher arrives through the escalation lane or through an episode drilldown, they land on the same kind of decision surface. The displayed evidence, staged decisions, and follow-up rows simply scope to whichever segment was selected.</p>
     <p>Reusing the same surface across both paths is deliberate. It keeps the decision logic in one place instead of duplicating it per entry path. Each path still optimizes for its own situation. The escalation lane is built for speed, and the episode drilldown is built for full context.</p>
   </div>
@@ -703,7 +761,7 @@
 
 <section class="block">
   <div class="wrap">
-    <h2>What this demonstrates</h2>
+    <h2 id="what-this-demonstrates">What this demonstrates</h2>
     <div class="tbl-wrap">
       <table>
         <thead>

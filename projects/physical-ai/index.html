@@ -7,8 +7,9 @@
   <meta name="description" content="Case study on diagnosing an undefined Physical AI data review bottleneck, defining a Task/Subtask operating structure, and designing a staged review workflow for training-readiness decisions.">
   <style>
 
-    :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#f8fafc; --panel:#ffffff; --link-soft:#eff6ff; }
+    :root { --text:#172033; --muted:#5f6b7a; --line:#e5e7eb; --link:#1d4ed8; --soft:#eaf3ff; --panel:#ffffff; --link-soft:#eaf3ff; }
     * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:24px; }
     body { margin:0; background:#fff; color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; font-size:17px; line-height:1.7; }
     main { width:min(880px, calc(100% - 40px)); margin:0 auto; padding:54px 0 64px; }
     a { color:var(--link); text-decoration:none; text-underline-offset:3px; }
@@ -20,6 +21,16 @@
     .summary-card { margin:30px 0 38px; padding:14px 18px; border:0; border-left:3px solid var(--link); border-radius:0; background:var(--soft); }
     .summary-card p { margin:0; color:#263244; }
     .summary-card p + p { margin-top:12px; }
+    .toc-nav { margin:10px 0 34px; padding:14px 18px; border:0; border-left:3px solid var(--link); border-radius:0; background:var(--soft); font-size:.92rem; line-height:1.45; }
+    .toc-nav .toc-label { margin:0 0 8px; color:#334155; font-size:.78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .toc-nav a { display:inline-block; margin:0 16px 6px 0; color:#334155; font-weight:600; }
+    .toc-nav a:hover { color:var(--link); }
+    @media (min-width:1260px) {
+      .toc-nav { position:fixed; top:96px; left:max(12px, calc((100vw - 880px)/2 - 184px)); width:170px; margin:0; padding:0 0 0 14px; border-left:1px solid var(--line); background:transparent; }
+      .toc-nav a { display:block; margin:0; padding:5px 0; color:var(--muted); font-weight:500; }
+      .toc-nav .toc-label { color:var(--muted); }
+    }
+    @media (max-width:560px) { .toc-nav { font-size:.9rem; } .toc-nav a { display:block; margin:0; padding:3px 0; } }
     h2 { margin:48px 0 14px; padding-top:28px; border-top:1px solid var(--line); font-size:1.08rem; letter-spacing:.06em; text-transform:uppercase; }
     h3 { margin:30px 0 10px; color:var(--muted); font-size:1.18rem; line-height:1.35; }
     p { margin:0 0 16px; }
@@ -42,6 +53,14 @@
       <p>Researchers said review was "impossible." I diagnosed the missing review structure. The fix was a Task/Subtask operating model with a staged review workflow built to turn Physical AI data collection into training-readiness decisions.</p>
       <p>Physical AI refers to AI models that perceive, decide, and act in the physical world through embodied systems such as robots and autonomous vehicles. This case study focuses on robot manipulation data, such as robotic-arm tasks where a robot picks up, moves, or places objects. Each episode combines video, sensor readings, and metadata, and this case study covers the review workflow needed to make that multimodal data ready for model training.</p>
     </div>
+    <nav class="toc-nav" aria-label="On this page">
+      <div class="toc-label">On this page</div>
+      <a href="#situation">Situation</a>
+      <a href="#diagnosis">Diagnosis</a>
+      <a href="#approach">Approach</a>
+      <a href="#what-changed">What changed</a>
+      <a href="#framing">Framing</a>
+    </nav>
 
     <h2 id="situation">Situation</h2>
     <p>The Ministry of Science and ICT’s Physical AI Leading Technology Development Program was a KRW 34 billion national program to develop a Physical AI foundation model. A consortium centered on the lead research company was formed to compete for the program against other consortiums. The lead research company led model development, while my company joined because of its experience running large-scale data collection and processing projects. It seconded me and one engineer to the lead research company to support the data-pipeline work from inside the model-development team.</p>
