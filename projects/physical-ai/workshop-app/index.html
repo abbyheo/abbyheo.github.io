@@ -196,7 +196,7 @@
     margin: 24px 0 8px;
   }
   .flow-step {
-    background: transparent;
+    background: var(--bg-panel);
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     border-radius: 0;
@@ -483,7 +483,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/dashboard-overview.png" alt="Full Dashboard view: Collection Ops Summary and Sections A, B, and C" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>The dashboard sets up the review: which cases need judgment, where usable data is being lost, and whether the batch is ready to export.</figcaption>
+      <figcaption>The dashboard sets up the review by showing which cases need judgment, where usable data is being lost, and whether the batch is ready to export.</figcaption>
     </figure>
 
     <h3>A. Head Researcher escalation cases</h3>
@@ -499,10 +499,10 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-escalation-table.png" alt="Head Researcher Escalation Cases table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>This table matters because Head Researcher review starts from cases already routed for judgment, not a blind scan of every segment.</figcaption>
+      <figcaption>Head Researcher review starts here, from cases already routed for judgment, not a blind scan of every segment.</figcaption>
     </figure>
 
-    <h3>B. All-episodes review table</h3>
+    <h3>B. Physical AI Data Collection Review: All Episodes</h3>
     <div class="panel-card">
       <div class="panel-label">Dashboard section</div>
       <h4>All collected episodes with status, primary issue, and entry point for segment-level drilldown</h4>
@@ -515,7 +515,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review: All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>EP_018 is included because it proves the central point of the app: one failed segment should not erase every usable span in the episode.</figcaption>
+      <figcaption>EP_018 is included because it proves the central point of the app. One failed segment should not erase every usable span in the episode.</figcaption>
     </figure>
 
     <h3>C. Yield-loss drivers</h3>
@@ -531,7 +531,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/yield-loss-drivers-table.png" alt="Data Collection Yield Loss Drivers table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>This view matters because closed defect decisions become a signal for where the team should fix collection, sensor, or workflow problems next.</figcaption>
+      <figcaption>Closed defect decisions become a signal here, pointing to where the team should fix collection, sensor, or workflow problems next.</figcaption>
     </figure>
   </div>
 </section>
@@ -551,7 +551,7 @@
         <div class="desc">Dashboard &rarr; B. All Episodes &rarr; Episode Review Detail &rarr; Segment Review Detail. The full-context path for inspecting a collection run end to end.</div>
       </div>
     </div>
-    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain: batch state at the dashboard, collection context at the episode level, training-use judgment at the segment level, and operational correction at the action level.</p>
+    <p style="margin-top:18px; font-size: 14.5px;">The repeated design choice is to keep each surface at the right grain. Batch state belongs at the dashboard, collection context at the episode level, and training-use judgment at the segment level.</p>
   </div>
 </section>
 
@@ -582,7 +582,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-escalation-table.png" alt="Head Researcher Escalation Cases table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>This entry point matters because the Data PM’s escalation reason follows SEG_018_04 into Head Researcher review.</figcaption>
+      <figcaption>The Data PM's escalation reason follows SEG_018_04 all the way into Head Researcher review.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 2 &middot; Segment Review Detail (HR Escalation Lane)</div>
@@ -608,7 +608,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/segment-review-decision-evidence.png" alt="Decision Evidence" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Segment Review Detail exists because training usability is decided at the segment level, using criteria and evidence rather than episode status alone.</figcaption>
+      <figcaption>Training-usability calls happen at this level, using criteria and evidence rather than episode status alone.</figcaption>
     </figure>
 
     <figure>
@@ -619,18 +619,18 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-review-closure-f.png" alt="Head Researcher final review closure" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Staged review flow: Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher’s closure records the final training-use decision.</figcaption>
+      <figcaption>In this staged review flow, Initial Reviewer and Data PM decisions remain visible as read-only context, while the Head Researcher's closure records the final training-use decision.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 3 &middot; Follow-up Action Detail (if a defect is diagnosed)</div>
-    <p>If the closure identifies a defect, the reviewer can click through to a recommended action: target, owner, priority, due date, status, source defect, affected segment, and supporting evidence.</p>
+    <p>If the closure identifies a defect, the reviewer can click through to a recommended action, which includes target, owner, priority, due date, status, source defect, affected segment, and supporting evidence.</p>
     <figure>
       <div class="shot">
         <div class="shot-single">
           <img src="../../../assets/images/physical-ai/workshop-app/segment-review-follow-up-actions-table.png" alt="Follow-up Actions in the Same Episode table with selected action row" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>This row matters because review should lead to a concrete action when a defect is diagnosed, not stop at a training-use label.</figcaption>
+      <figcaption>Review should lead to a concrete action when a defect is diagnosed, not stop at a training-use label.</figcaption>
     </figure>
     <figure>
       <div class="shot">
@@ -639,7 +639,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/follow-up-source-defect.png" alt="Follow-up Action Detail source defect summary" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>Follow-up Action Detail shows whether that action is specific enough to execute: owner, due date, source defect, affected segment, and evidence are tied together.</figcaption>
+      <figcaption>Follow-up Action Detail shows whether that action is specific enough to execute. Owner, due date, source defect, affected segment, and evidence are all tied together.</figcaption>
     </figure>
   </div>
 </section>
@@ -663,7 +663,7 @@
       <span class="step current">Segment Review Detail</span>
     </div>
 
-    <div class="path-section-label">Step 1 &middot; B. All-episodes review table</div>
+    <div class="path-section-label">Step 1 &middot; B. Physical AI Data Collection Review: All Episodes</div>
     <div class="panel-card">
       <h4>Open any episode, especially failed or partially salvaged runs</h4>
       <div class="grain">grain: one row = one Collection Episode</div>
@@ -675,7 +675,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/all-episodes-review-table.png" alt="Physical AI Data Collection Review: All Episodes table" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>This entry point matters because the reviewer starts from the whole collection run before deciding which segments deserve closer review.</figcaption>
+      <figcaption>The reviewer starts from the whole collection run before deciding which segments deserve closer review.</figcaption>
     </figure>
 
     <div class="path-section-label">Step 2 &middot; Episode Review Detail</div>
@@ -742,7 +742,7 @@
           <img src="../../../assets/images/physical-ai/workshop-app/head-researcher-review-closure-f.png" alt="Segment Review Detail final closure" loading="lazy" decoding="async">
         </div>
       </div>
-      <figcaption>The repeated Segment Review Detail screen matters because both paths close with the same decision logic, not separate rules for escalation and episode drilldown.</figcaption>
+      <figcaption>Both paths close with the same decision logic here, not separate rules for escalation and episode drilldown.</figcaption>
     </figure>
 
   </div>
