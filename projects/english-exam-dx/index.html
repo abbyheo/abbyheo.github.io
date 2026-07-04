@@ -83,8 +83,8 @@
     <h3 id="capacity-chain">Capacity chain</h3>
     <p>Answer-sheet layouts varied by publisher: single-column and two-column layouts, boxed numbers, and mixed answer/explanation formats. The task was not just OCR. Each answer-sheet entry had to be converted into structured CSV fields: its visual layout column, the answer value itself, such as a multiple-choice option number or a short-answer word or sentence, and the corresponding explanation. Basic OCR with Tesseract, an open-source text-recognition engine, could extract text, but it could not reliably separate those fields or preserve the layout relationships. I used Gemini Vision Pro, grouped similar layouts into batches, had reviewers check first-pass extraction, and fed that feedback into the next prompt/schema iteration. Manual PM copying became a repeatable pipeline.</p>
     <figure>
-      <img src="../../assets/images/english-exam-dx/english-exam-dx-02.png" alt="Answer-sheet extraction workflow: PDF → PNG → Gemini Vision extraction → Reviewer QC → Prompt/schema update">
-      <figcaption>Answer-sheet extraction workflow: PDF → PNG → Gemini Vision extraction → Reviewer QC → Prompt/schema update</figcaption>
+      <img src="../../assets/images/english-exam-dx/english-exam-dx-02.png" alt="Answer-sheet extraction workflow: PDF → PNG → Gemini Pro Vision extraction → Reviewer QC → Prompt/schema update">
+      <figcaption>Answer-sheet extraction workflow: PDF → PNG → Gemini Pro Vision extraction → Reviewer QC → Prompt/schema update</figcaption>
     </figure>
     <h3 id="scale-layer">Scale layer</h3>
     <p>Once integrity and capacity were reasonably stable, I added source tracking. I recorded which workbooks were set up on the platform, what resolution was used for PNG conversion, and how locked files were handled. This let us trace whether an error came from a worker mistake or a source-file problem and push back to the client with specific evidence instead of a general complaint. Delivering 200K+ items reliably meant controlling the source.</p>
