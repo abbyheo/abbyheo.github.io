@@ -9,7 +9,7 @@ A deliberately simple public landing page for Abby Heo.
 - `projects/physical-ai/workshop-app/index.html` — Foundry Workshop app walkthrough for the Physical AI case
 - `projects/physical-ai/collected-data/index.html` — directly collected Physical AI LeRobot data sample
 - `projects/english-exam-dx/index.html` — English Exam Content DX case study
-- `assets/files/abby-heo-resume.pdf` — resume PDF linked from the page
+- `assets/files/Dahm_Won_Heo_Resume.pdf` — resume PDF linked from the page
 
 ## Deployment
 
