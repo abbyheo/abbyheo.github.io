@@ -50,6 +50,7 @@
     .legend { color:var(--muted); font-size:.92rem; }
     .legend .state { color:var(--blue); font-weight:700; }
     .legend .action { color:var(--orange); font-weight:700; }
+    .legend .flagged { color:#dc2626; font-weight:700; }
     .sensor-canvas { display:block; width:100%; height:300px; border:1px solid var(--line); border-radius:0; background:#fff; }
     .review-note { margin:24px 0 0; padding:16px 18px; border:0; border-left:3px solid var(--link); border-radius:0; background:var(--soft); color:#263244; }
     .review-note.warning { border-color:#fecaca; background:#fff7f7; }
@@ -174,7 +175,7 @@
         <div class="sensor-panel">
           <header>
             <h4>State/action signal graph</h4>
-            <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action · red band = flagged segment window</div>
+            <div class="legend"><span class="state">Blue</span> = observation.state · <span class="action">Orange</span> = action · <span class="flagged">Red band</span> = flagged segment window</div>
           </header>
           <canvas class="sensor-canvas" data-role="sensor-canvas" aria-label="EP_018 state/action signal chart"></canvas>
           <p class="note">The red band is SEG_018_04, flagged by QC on the sensor signal and then reviewed through the staged workflow.</p>
